@@ -13,13 +13,14 @@
     <style>
         /* --- MODERN DARK THEME VARIABLES --- */
         :root {
-            --bg-body: #0b1120;       /* Very dark blue/slate */
-            --bg-card: #1e293b;       /* Lighter slate */
-            --text-main: #f1f5f9;     /* White-ish */
-            --text-muted: #94a3b8;    /* Grey */
-            --accent: #06b6d4;        /* Cyan/Teal for high tech feel */
-            --accent-hover: #22d3ee;
-            --section-gap: 6rem;
+            --bg-body: #0f172a;       /* Slate 900 */
+            --bg-card: #1e293b;       /* Slate 800 */
+            --bg-accent: #334155;     /* Slate 700 */
+            --text-main: #f8fafc;     /* Slate 50 */
+            --text-muted: #94a3b8;    /* Slate 400 */
+            --accent: #38bdf8;        /* Sky 400 */
+            --accent-hover: #0ea5e9;  /* Sky 500 */
+            --section-gap: 5rem;
         }
 
         /* --- GLOBAL RESET --- */
@@ -44,14 +45,14 @@
         }
 
         .section-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             border-left: 4px solid var(--accent);
             padding-left: 1.5rem;
         }
 
         .section-header h2 {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--text-main);
         }
 
@@ -59,8 +60,9 @@
             color: var(--accent);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
         }
 
         /* --- NAVIGATION --- */
@@ -69,64 +71,66 @@
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
         .logo span { color: var(--accent); }
 
         .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { color: var(--text-muted); font-size: 0.95rem; }
+        .nav-links a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
         .nav-links a:hover { color: var(--accent); }
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 8rem 0 6rem 0;
-            max-width: 800px;
+            padding: 6rem 0 4rem 0;
+            max-width: 900px;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
         }
 
+        .hero h1 span { color: var(--accent); }
+
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 2rem;
         }
 
-        /* --- FOLDER STRUCTURE IMAGE (OVERVIEW) --- */
-        .overview-image-container {
+        /* --- OVERVIEW IMAGE --- */
+        .structure-image {
             background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 16px;
-            margin-bottom: var(--section-gap);
-            border: 1px solid rgba(255,255,255,0.05);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
             text-align: center;
+            margin-bottom: var(--section-gap);
         }
 
-        .overview-image-container img {
+        .structure-image img {
             max-width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            height: auto;
+            border-radius: 6px;
+            opacity: 0.9;
         }
-
-        .overview-caption {
+        
+        .structure-caption {
             margin-top: 1rem;
-            color: var(--text-muted);
             font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         /* --- PROJECT GRID & CARDS --- */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
             margin-bottom: var(--section-gap);
         }
 
@@ -134,96 +138,110 @@
             background-color: var(--bg-card);
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.05);
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            padding: 1.75rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             border-color: var(--accent);
         }
 
-        .card-body { padding: 2rem; flex-grow: 1; }
-
-        .card-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
 
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
+        .folder-icon {
+            color: #fbbf24; /* Folder Yellow Color */
+            font-size: 1.5rem;
         }
 
-        .card-details {
-            list-style: none;
-            margin-bottom: 1.5rem;
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
         }
 
-        .card-details li {
-            position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: #cbd5e1;
+        .card-desc {
             font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .card-details li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
+        .card-specs {
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .card-specs li {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .card-specs li i {
             color: var(--accent);
+            margin-right: 0.6rem;
+            margin-top: 0.2rem;
+            font-size: 0.8rem;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: auto; /* Pushes to bottom */
+            gap: 0.5rem;
         }
 
         .tag {
-            font-size: 0.75rem;
-            padding: 0.3rem 0.8rem;
-            background: rgba(6, 182, 212, 0.1);
+            font-size: 0.7rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-accent);
+            color: var(--text-main);
+            border-radius: 4px;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tag.highlight {
+            background: rgba(56, 189, 248, 0.15);
             color: var(--accent);
-            border-radius: 20px;
-            font-weight: 600;
+            border-color: rgba(56, 189, 248, 0.3);
         }
 
         /* --- CONTACT --- */
-        .contact-section {
-            text-align: center;
-            padding: 6rem 0;
+        .footer {
             border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .btn-contact {
-            display: inline-block;
-            background-color: var(--text-main);
-            color: var(--bg-body);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 4rem 0;
+            text-align: center;
             margin-top: 2rem;
         }
-        
-        .btn-contact:hover {
+
+        .contact-btn {
+            display: inline-block;
             background-color: var(--accent);
+            color: var(--bg-body);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 1.5rem;
         }
+        
+        .contact-btn:hover { background-color: var(--accent-hover); }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.8rem; }
+            .hero h1 { font-size: 2.5rem; }
             .project-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -236,225 +254,227 @@
             <div class="nav-links">
                 <a href="#mechanical">Mechanical</a>
                 <a href="#simulation">Simulation</a>
-                <a href="#ai">AI & ML</a>
-                <a href="#contact">Contact</a>
+                <a href="#software">Software/ML</a>
             </div>
         </nav>
     </header>
 
     <section class="container hero">
-        <p style="color: var(--accent); font-weight: 600;">Mechanical Design & Simulation Engineer</p>
-        <h1>Engineering Robust Physical & Digital Systems.</h1>
+        <h1>Engineering Portfolio.<br><span>Mechanical Design & Simulation.</span></h1>
         <p>
-            Specializing in high-voltage mechanical design, advanced FEA simulation, 
-            and physics-informed machine learning.
+            An organized archive of my technical projects ranging from high-voltage mechanical design 
+            and fluid thermal simulation to AI-driven engineering analysis.
         </p>
     </section>
 
     <section class="container">
-        <div class="overview-image-container">
-            <img src="assets/project-structure.png" alt="Project Portfolio Folder Structure">
-            <p class="overview-caption">Overview of Project Archive & Technical Competencies</p>
+        <div class="structure-image">
+            <img src="assets/folder-structure.png" alt="Portfolio Folder Structure">
+            <p class="structure-caption">Figure 1: Overview of Project Directory Structure</p>
         </div>
     </section>
 
     <section id="mechanical" class="container">
         <div class="section-header">
-            <p>Hardware Development</p>
-            <h2>Mechanical Design & FEA</h2>
+            <p>01 / Hardware Development</p>
+            <h2>Mechanical Design & Fixtures</h2>
         </div>
 
         <div class="project-grid">
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-robot card-icon"></i>
-                    <h3>HV End-Effector Design</h3>
-                    <p>
-                        Designed a robotic end-effector for handling high-voltage (1000V DC) power modules 
-                        during manufacturing tests.
-                    </p>
-                    <ul class="card-details">
-                        <li>Ensured IEC 60664-1 creepage/clearance compliance</li>
-                        <li>Designed self-aligning forks with < 600g total mass</li>
-                        <li>Verified 150A continuous current capacity</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">SolidWorks/NX</span>
-                        <span class="tag">GD&T</span>
-                        <span class="tag">Prototyping</span>
-                    </div>
+            
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>End effector design</h3>
                 </div>
-            </div>
+                <div class="card-desc">
+                    Development of a robotic end-effector for handling high-voltage power modules.
+                </div>
+                <ul class="card-specs">
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Target: DC-DC Energy Converters & 1000V DC Charging Stages [cite: 1445]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Safety: Integrated IEC 60664-1 creepage compliance [cite: 1453]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Mechanics: Self-aligning forks, < 600g mass [cite: 1503]</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">SolidWorks/NX</span>
+                    <span class="tag">GD&T</span>
+                    <span class="tag">High Voltage</span>
+                </div>
+            </article>
 
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-ring card-icon"></i>
-                    <h3>Bearing Ring Creep Analysis</h3>
-                    <p>
-                        Investigation of inner ring creep in wind turbine main bearings (TRB & CRB) to prevent 
-                        fretting corrosion failure.
-                    </p>
-                    <ul class="card-details">
-                        <li>Developed FEA model in Ansys with nonlinear contacts</li>
-                        <li>Automated load rotation using APDL scripting</li>
-                        <li>Analyzed influence of interference fit and friction</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">Ansys APDL</span>
-                        <span class="tag">FEA</span>
-                        <span class="tag">Contact Mechanics</span>
-                    </div>
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>Fixtures and Gauges</h3>
                 </div>
-            </div>
+                <div class="card-desc">
+                    Design of manufacturing aids to ensure assembly precision and quality control.
+                </div>
+                <ul class="card-specs">
+                    <li><i class="fas fa-chevron-right"></i> Precision go/no-go gauges for QA</li>
+                    <li><i class="fas fa-chevron-right"></i> Assembly fixtures for complex geometries</li>
+                    <li><i class="fas fa-chevron-right"></i> Reduction in operator error and cycle time</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">CAD Modeling</span>
+                    <span class="tag">Manufacturing</span>
+                    <span class="tag">Tolerancing</span>
+                </div>
+            </article>
 
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-tools card-icon"></i>
-                    <h3>Fixtures & Gauges</h3>
-                    <p>
-                        Development of manufacturing aids to ensure assembly precision and repeatability.
-                    </p>
-                    <ul class="card-details">
-                        <li>Designed go/no-go gauges for quality control</li>
-                        <li>Created assembly fixtures for complex geometries</li>
-                        <li>Reduced assembly cycle time and operator error</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">CAD</span>
-                        <span class="tag">Manufacturing</span>
-                    </div>
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>ECU Test Bench, strain analysis</h3>
                 </div>
-            </div>
+                <div class="card-desc">
+                    Test bench development for Electronic Control Units and mechanical strain verification.
+                </div>
+                <ul class="card-specs">
+                    <li><i class="fas fa-chevron-right"></i> Strain gauge data acquisition</li>
+                    <li><i class="fas fa-chevron-right"></i> Automated test sequences</li>
+                    <li><i class="fas fa-chevron-right"></i> LabVIEW integration for signal processing</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">LabVIEW</span>
+                    <span class="tag">Strain Analysis</span>
+                    <span class="tag">Test Rigs</span>
+                </div>
+            </article>
+
         </div>
     </section>
 
     <section id="simulation" class="container">
         <div class="section-header">
-            <p>System Modeling</p>
-            <h2>Simulation & Fluid Dynamics</h2>
+            <p>02 / System Modeling</p>
+            <h2>Matlab, Simulink & FEA</h2>
         </div>
 
         <div class="project-grid">
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-wind card-icon"></i>
-                    <h3>Wind Turbine Cooling System</h3>
-                    <p>
-                        Thermal-hydraulic modeling of a cooling circuit for wind turbine power electronics.
-                    </p>
-                    <ul class="card-details">
-                        <li>Modeled pumps, radiators, and valves in Simscape</li>
-                        <li>Implemented PID control for temperature regulation</li>
-                        <li>Simulated cold-start and variable wind load scenarios</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">MATLAB/Simulink</span>
-                        <span class="tag">Simscape Fluids</span>
-                        <span class="tag">Control Logic</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-industry card-icon"></i>
-                    <h3>Industrial Cooling Loop (DynaLab)</h3>
-                    <p>
-                        Simulation of a 30% glycol/water cooling network for a large-scale test facility.
-                    </p>
-                    <ul class="card-details">
-                        <li>Modeled 3.4 MW heat rejection subsystem</li>
-                        <li>Validated system pressure (5.2 bar) and flow rates</li>
-                        <li>Developed dashboard for manual valve control</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">Simulink</span>
-                        <span class="tag">Thermal Analysis</span>
-                        <span class="tag">HMI Design</span>
-                    </div>
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>Matlab + Simulink Industrial Cooling</h3>
                 </div>
-            </div>
+                <div class="card-desc">
+                    Simulation of the DynaLab auxiliary cooling system for large-scale testing.
+                </div>
+                <ul class="card-specs">
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Fluid: 30% Glycol / 70% Water mixture [cite: 1320]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Control: PID logic for valve/pump regulation [cite: 1342]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Heat Rejection: 3,400 kW capacity modeling [cite: 1322]</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">Simulink</span>
+                    <span class="tag">Simscape Fluids</span>
+                    <span class="tag">PID Control</span>
+                </div>
+            </article>
 
-            <div class="card">
-                <div class="card-body">
-                    <i class="fab fa-python card-icon"></i>
-                    <h3>Python Pressure Drop Tool</h3>
-                    <p>
-                        Interactive Jupyter Notebook tool for calculating hydraulic pressure losses in piping networks.
-                    </p>
-                    <ul class="card-details">
-                        <li>Calculates major (friction) and minor (fittings) losses</li>
-                        <li>Auto-selects Laminar vs Turbulent friction models</li>
-                        <li>Interactive UI for pipe selection and fluid properties</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">Python</span>
-                        <span class="tag">Jupyter</span>
-                        <span class="tag">Fluid Mechanics</span>
-                    </div>
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>Matlab + Simulink turbine</h3>
                 </div>
-            </div>
+                <div class="card-desc">
+                    Thermal-hydraulic modeling of a wind turbine cooling circuit for power electronics.
+                </div>
+                <ul class="card-specs">
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Components: Converters, Transformers, Plate Coolers [cite: 307]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Analysis: Pressure drops and flow distribution [cite: 394]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Environment: Wind speed dependent heat transfer [cite: 426]</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">MATLAB</span>
+                    <span class="tag">Thermal Analysis</span>
+                    <span class="tag">Energy Systems</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>Simulation</h3>
+                </div>
+                <div class="card-desc">
+                    FEA investigation of Inner Ring Creep in Wind Turbine Main Bearings.
+                </div>
+                <ul class="card-specs">
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Tool: Ansys APDL & Static Structural [cite: 916]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Focus: Frictional contact and interference fit analysis [cite: 2197]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Automation: Scripted load rotation for quantitative results [cite: 2220]</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">Ansys APDL</span>
+                    <span class="tag">FEA</span>
+                    <span class="tag">Contact Mechanics</span>
+                </div>
+            </article>
+
         </div>
     </section>
 
-    <section id="ai" class="container">
+    <section id="software" class="container">
         <div class="section-header">
-            <p>Computational Intelligence</p>
-            <h2>AI & Machine Learning</h2>
+            <p>03 / Code & AI</p>
+            <h2>Machine Learning & Python</h2>
         </div>
 
         <div class="project-grid">
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-microchip card-icon"></i>
-                    <h3>Intelligent Tire Monitoring</h3>
-                    <p>
-                        Machine learning model to classify bicycle tire pressure using accelerometer data.
-                    </p>
-                    <ul class="card-details">
-                        <li>Signal processing (FFT, Bandpass filtering)</li>
-                        <li>Developed Feed Forward Neural Network (FFNN)</li>
-                        <li>Achieved multiclass classification for pressure levels</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">Neural Networks</span>
-                        <span class="tag">Signal Processing</span>
-                        <span class="tag">Python/MATLAB</span>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card">
-                <div class="card-body">
-                    <i class="fas fa-brain card-icon"></i>
-                    <h3>PINN for Damped Oscillations</h3>
-                    <p>
-                        Application of Physics-Informed Neural Networks to predict the motion of a damped pendulum.
-                    </p>
-                    <ul class="card-details">
-                        <li>Integrated physics loss functions into training loop</li>
-                        <li>Compared Tanh, Sigmoid, and ELU activation functions</li>
-                        <li>Outperformed standard NN in data-sparse regions</li>
-                    </ul>
-                    <div class="tech-stack">
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">Physics-Informed AI</span>
-                        <span class="tag">Optimization</span>
-                    </div>
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>Machine Learning</h3>
                 </div>
-            </div>
+                <div class="card-desc">
+                    AI applications in engineering systems monitoring and physics prediction.
+                </div>
+                <ul class="card-specs">
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Project A: Intelligent Tire Pressure Monitoring [cite: 5]</li>
+                    [cite_start]<li><i class="fas fa-chevron-right"></i> Project B: PINN for Damped Pendulum Oscillations [cite: 2848]</li>
+                    <li><i class="fas fa-chevron-right"></i> Methods: Neural Networks (FFNN), FFT, Signal Processing</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">Python</span>
+                    <span class="tag">Neural Networks</span>
+                    <span class="tag">Signal Processing</span>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <i class="fas fa-folder folder-icon"></i>
+                    <h3>Python Script - Pressure Calculation</h3>
+                </div>
+                <div class="card-desc">
+                    Interactive tool for calculating hydraulic pressure losses in piping networks.
+                </div>
+                <ul class="card-specs">
+                    <li><i class="fas fa-chevron-right"></i> Darcy-Weisbach equation implementation</li>
+                    <li><i class="fas fa-chevron-right"></i> Automatic friction model selection (Laminar vs Turbulent)</li>
+                    <li><i class="fas fa-chevron-right"></i> Interactive UI for fluid properties and pipe selection</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tag highlight">Jupyter Notebook</span>
+                    <span class="tag">Fluid Mechanics</span>
+                    <span class="tag">Python</span>
+                </div>
+            </article>
+
         </div>
     </section>
 
-    <footer id="contact" class="contact-section container">
-        <h2 style="font-size: 2rem; margin-bottom: 1rem;">Let's Connect</h2>
-        <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto;">
-            I am currently open to opportunities in Mechanical Design, Simulation, and Engineering Analysis.
+    <footer class="footer container">
+        <h2>Let's Connect</h2>
+        <p style="color: var(--text-muted); margin-top: 1rem;">
+            Open for opportunities in Mechanical Design and Simulation.
         </p>
-        <a href="mailto:your.email@example.com" class="btn-contact">Get in Touch</a>
-        
-        <div style="margin-top: 4rem; color: var(--text-muted); font-size: 0.8rem;">
-            &copy; 2024 Deepak Petchimuthu. All Rights Reserved.
+        <a href="mailto:your.email@example.com" class="contact-btn">Send Email</a>
+        <div style="margin-top: 3rem; font-size: 0.8rem; color: #64748b;">
+            &copy; 2024 Deepak Petchimuthu. Built with Code.
         </div>
     </footer>
 
