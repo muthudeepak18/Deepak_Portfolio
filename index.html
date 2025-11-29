@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deepak | Engineering Portfolio</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -14,765 +11,595 @@
         :root {
             --bg-body: #0f172a;
             --bg-card: #1e293b;
-            --bg-accent: #334155;
+            --bg-soft: #020617;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --accent: #38bdf8;
-            --accent-hover: #0ea5e9;
-            --section-gap: 5rem;
+            --overlay-bg: rgba(15, 23, 42, 0.98);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-header {
-            margin-bottom: 2.5rem;
-            border-left: 4px solid var(--accent);
-            padding-left: 1.5rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .section-header p {
-            color: var(--accent);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.5rem;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; margin-bottom: 6rem; }
 
         nav {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             padding: 1.5rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo { font-weight: 800; font-size: 1.5rem; }
         .logo span { color: var(--accent); }
 
         .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { color: var(--text-muted); font-size: 0.9rem; font-weight: 500; }
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a { color: var(--text-muted); font-size: 0.9rem; }
 
-        .hero {
-            padding: 6rem 0 4rem 0;
-            max-width: 900px;
-        }
+        .hero { padding: 6rem 0 4rem 0; max-width: 800px; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; }
+        .hero span { color: var(--accent); }
+        .hero p { color: var(--text-muted); font-size: 1.1rem; }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -1px;
-        }
-
-        .hero h1 span { color: var(--accent); }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin-bottom: 2rem;
-        }
-
-        .structure-image {
+        .folder-structure {
             background: var(--bg-card);
-            padding: 1rem;
-            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
             text-align: center;
-            margin-bottom: var(--section-gap);
+            margin-bottom: 4rem;
         }
 
-        .structure-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            opacity: 0.9;
-        }
-        
-        .structure-caption {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: var(--section-gap);
-        }
+        .folder-structure img { max-width: 100%; border-radius: 6px; }
+        .caption { margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; }
 
         .card {
-            background-color: var(--bg-card);
-            border-radius: 12px;
+            background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 12px;
             padding: 1.75rem;
-            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            position: relative;
+            transition: 0.3s;
             cursor: pointer;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-            box-shadow: 0 18px 35px rgba(15,23,42,0.9);
+        .card:hover { transform: translateY(-5px); border-color: var(--accent); }
+
+        .card-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: monospace;
+            opacity: 0.3;
+            font-size: 2rem;
+            font-weight: 800;
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
+        .card h3 { margin: 1rem 0 0.5rem 0; font-size: 1.15rem; }
+        .card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
 
-        .folder-icon {
-            color: #fbbf24;
-            font-size: 1.5rem;
-        }
-
-        .card h3 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .card-desc {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .card-specs {
-            background: rgba(0,0,0,0.2);
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .card-specs li {
-            font-size: 0.85rem;
-            color: #cbd5e1;
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .card-specs li i {
-            color: var(--accent);
-            margin-right: 0.6rem;
-            margin-top: 0.2rem;
-            font-size: 0.8rem;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
+        .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .tag {
             font-size: 0.7rem;
             padding: 0.25rem 0.75rem;
-            background: var(--bg-accent);
-            color: var(--text-main);
-            border-radius: 4px;
-            font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .tag.highlight {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(56, 189, 248, 0.1);
             color: var(--accent);
-            border-color: rgba(56, 189, 248, 0.3);
+            border-radius: 4px;
         }
 
-        .footer {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 4rem 0;
-            text-align: center;
-            margin-top: 2rem;
-        }
+        /* MODAL – SINGLE PAGE LAYOUT */
 
-        .contact-btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--bg-body);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-top: 1.5rem;
-        }
-        
-        .contact-btn:hover { background-color: var(--accent-hover); }
-
-        /* -------- PROJECT DETAIL MODAL -------- */
-
-        .project-modal {
+        .modal {
+            display: none;
             position: fixed;
             inset: 0;
-            background: rgba(15,23,42,0.92);
-            display: none;
-            justify-content: center;
-            align-items: flex-start;
+            background: var(--overlay-bg);
+            z-index: 1000;
             overflow-y: auto;
-            z-index: 50;
-            padding: 4rem 1.5rem;
         }
 
-        .project-modal.open {
-            display: flex;
+        .modal.active { display: block; animation: fadeIn 0.25s ease; }
+
+        .modal-inner {
+            max-width: 1100px;
+            margin: 5vh auto 6vh auto;
+            background: var(--bg-soft);
+            border-radius: 18px;
+            border: 1px solid rgba(148,163,184,0.25);
+            box-shadow: 0 25px 60px rgba(15,23,42,0.9);
+            padding: 3rem 3rem 3.5rem 3rem;
         }
 
-        .project-modal-inner {
-            background: var(--bg-card);
-            border-radius: 16px;
-            border: 1px solid rgba(148,163,184,0.4);
-            max-width: 1000px;
-            width: 100%;
-            padding: 2.5rem 2rem 2rem 2rem;
-            position: relative;
-        }
-
-        .project-modal-close {
-            position: absolute;
-            top: 1.3rem;
+        .close-btn {
+            position: fixed;
+            top: 1.5rem;
             right: 1.5rem;
-            background: transparent;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
+            z-index: 1100;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            width: 48px;
+            height: 48px;
+            text-align: center;
+            line-height: 48px;
+            border-radius: 50%;
         }
 
-        .project-modal-close:hover {
-            color: var(--accent);
+        .report-header h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0.75rem;
         }
 
-        .project-modal-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-modal-subtitle {
+        .report-meta {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-modal-body {
-            display: grid;
-            grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
-            gap: 1.5rem;
-        }
-
-        .project-modal-body p {
             font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 0.9rem;
+            margin-bottom: 2.5rem;
         }
 
-        .project-highlights ul {
-            font-size: 0.85rem;
+        .report-meta span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .report-section {
+            margin-bottom: 2.4rem;
+        }
+
+        .report-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .report-section p {
+            margin-bottom: 0.75rem;
             color: #cbd5e1;
+            text-align: justify;
+            font-size: 0.98rem;
         }
 
-        .project-highlights li {
-            margin-bottom: 0.45rem;
+        .report-section ul {
+            margin-left: 1.25rem;
+            margin-top: 0.25rem;
         }
 
-        .project-gallery {
+        .report-section li {
+            color: #cbd5e1;
+            font-size: 0.96rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .inline-kpi {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 0.75rem;
+            margin-top: 0.75rem;
         }
 
-        .project-gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            object-fit: cover;
+        .kpi-chip {
+            background: #020617;
+            border-radius: 999px;
+            padding: 0.45rem 0.9rem;
             border: 1px solid rgba(148,163,184,0.4);
-        }
-
-        .project-meta {
-            margin-top: 1.2rem;
             font-size: 0.8rem;
             color: var(--text-muted);
         }
 
-        @media (max-width: 900px) {
-            .project-modal-body {
-                grid-template-columns: 1fr;
-            }
-            .project-gallery {
-                grid-template-columns: 1fr 1fr;
-            }
+        .kpi-chip strong { color: var(--accent); }
+
+        /* INLINE FIGURES */
+
+        .inline-figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.1rem;
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        .inline-figure {
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid rgba(148,163,184,0.35);
+            overflow: hidden;
+        }
+
+        .inline-figure img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .inline-figure figcaption {
+            padding: 0.7rem 0.9rem 0.9rem 0.9rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .inline-figure figcaption span {
+            display: block;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+            font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .project-grid { grid-template-columns: 1fr; }
-            .project-modal-inner {
-                padding: 2rem 1.5rem 1.5rem 1.5rem;
-            }
+            .modal-inner { padding: 2.25rem 1.6rem 2.8rem 1.6rem; margin-top: 4vh; }
         }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <header class="container">
-        <nav>
-            <div class="logo">Deepak<span>.</span></div>
-            <div class="nav-links">
-                <a href="#mechanical">Mechanical</a>
-                <a href="#simulation">Simulation</a>
-                <a href="#software">Software/ML</a>
-            </div>
-        </nav>
-    </header>
-
-    <section class="container hero">
-        <h1>Engineering Portfolio.<br><span>Mechanical Design & Simulation.</span></h1>
-        <p>
-            An organised archive of my technical projects ranging from high-voltage mechanical design 
-            and fluid thermal simulation to AI-driven engineering analysis.
-        </p>
-    </section>
-
-    <section class="container">
-        <div class="structure-image">
-            <img src="assets/folder-structure.png" alt="Portfolio Folder Structure">
-            <p class="structure-caption">Figure 1: Overview of Project Directory Structure</p>
+<header class="container">
+    <nav>
+        <div class="logo">Deepak<span>.</span></div>
+        <div class="nav-links">
+            <a href="#projects">Work</a>
+            <a href="mailto:your.email@example.com">Contact</a>
         </div>
-    </section>
+    </nav>
+</header>
 
-    <!-- MECHANICAL SECTION -->
-    <section id="mechanical" class="container">
-        <div class="section-header">
-            <p>01 / Hardware Development</p>
-            <h2>Mechanical Design & Fixtures</h2>
-        </div>
+<section class="container hero">
+    <h1>Engineering Portfolio.<br><span>Mechanical &amp; Simulation.</span></h1>
+    <p>Specialised in high-voltage mechanical systems, fluid-thermal simulation, and physics-informed machine learning.</p>
+</section>
 
-        <div class="project-grid">
-            
-            <!-- PCBA TEST BENCH CARD -->
-            <article class="card" data-project-id="pcba-tester">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>PCBA Tester & Strain Analysis</h3>
-                </div>
-                <div class="card-desc">
-                    Production ICT/FCT fixture for an automotive ECU with controlled touchdown and rosette-based strain validation on the BGA corners.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Gas-spring clamshell mechanism with around 200 spring probes.</li>
-                    <li><i class="fas fa-chevron-right"></i> Rosette strain gauges and NI-9237 bridge module for measurement.</li>
-                    <li><i class="fas fa-chevron-right"></i> FEM and LabVIEW/MATLAB pipeline before end-of-line release.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">SolidWorks</span>
-                    <span class="tag highlight">FEM</span>
-                    <span class="tag">LabVIEW</span>
-                    <span class="tag">Test Engineering</span>
-                </div>
-            </article>
-
-            <!-- END EFFECTOR CARD -->
-            <article class="card" data-project-id="end-effector">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>End Effector Design</h3>
-                </div>
-                <div class="card-desc">
-                    Robotic end effector for handling high-voltage power modules inside a DC-DC charger and 1000 V DC charging stages.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Handles insulated power modules with defined orientation and preload.</li>
-                    <li><i class="fas fa-chevron-right"></i> Creepage and clearance respected in fork, clamp, and cable routing.</li>
-                    <li><i class="fas fa-chevron-right"></i> Mass optimised to stay inside the robot payload limits.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">SolidWorks/NX</span>
-                    <span class="tag">GD&T</span>
-                    <span class="tag">High Voltage</span>
-                </div>
-            </article>
-
-            <!-- FIXTURES AND GAUGES CARD -->
-            <article class="card" data-project-id="fixtures-gauges">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>Fixtures and Gauges</h3>
-                </div>
-                <div class="card-desc">
-                    Manufacturing fixtures and inspection gauges to improve repeatability and reduce operator error on the shop floor.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Go/no-go gauges for critical dimensions and connector positions.</li>
-                    <li><i class="fas fa-chevron-right"></i> Assembly jigs for multi-part alignment and clamping.</li>
-                    <li><i class="fas fa-chevron-right"></i> Reduced cycle time and scrap in pilot production runs.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">CAD Modelling</span>
-                    <span class="tag">Manufacturing</span>
-                    <span class="tag">Tolerancing</span>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- SIMULATION SECTION -->
-    <section id="simulation" class="container">
-        <div class="section-header">
-            <p>02 / System Modelling</p>
-            <h2>Matlab, Simulink & FEA</h2>
-        </div>
-
-        <div class="project-grid">
-
-            <article class="card">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>Matlab + Simulink Industrial Cooling</h3>
-                </div>
-                <div class="card-desc">
-                    Dynamic model of a large-scale auxiliary cooling system with plate heat exchangers, pumps, and control valves for drivetrain testing.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Water–glycol mixture modelled in Simscape Fluids.</li>
-                    <li><i class="fas fa-chevron-right"></i> PID logic for pump speed and regulating valves.</li>
-                    <li><i class="fas fa-chevron-right"></i> Heat rejection capability of several megawatts.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">Simulink</span>
-                    <span class="tag">Simscape Fluids</span>
-                    <span class="tag">PID Control</span>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>Matlab + Simulink Turbine Cooling</h3>
-                </div>
-                <div class="card-desc">
-                    Thermal-hydraulic model of a wind turbine cooling circuit for converters, transformers, and auxiliary components.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Pressure-drop and flow distribution across branches.</li>
-                    <li><i class="fas fa-chevron-right"></i> Interaction with ambient wind speed and nacelle temperature.</li>
-                    <li><i class="fas fa-chevron-right"></i> Sizing support for pumps, hoses, and heat exchangers.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">MATLAB</span>
-                    <span class="tag">Thermal Analysis</span>
-                    <span class="tag">Energy Systems</span>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>Bearing Inner-Ring Creep Simulation</h3>
-                </div>
-                <div class="card-desc">
-                    FEA study of inner-ring creep in a wind-turbine main bearing using frictional contact and interference fits.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Ansys APDL scripting to automate load rotation.</li>
-                    <li><i class="fas fa-chevron-right"></i> Contact pressure, slippage, and hoop stress evaluation.</li>
-                    <li><i class="fas fa-chevron-right"></i> Comparison of different fit classes and surface conditions.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">Ansys APDL</span>
-                    <span class="tag">FEA</span>
-                    <span class="tag">Contact Mechanics</span>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- SOFTWARE / ML SECTION -->
-    <section id="software" class="container">
-        <div class="section-header">
-            <p>03 / Code & AI</p>
-            <h2>Machine Learning & Python</h2>
-        </div>
-
-        <div class="project-grid">
-
-            <article class="card">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>Machine Learning</h3>
-                </div>
-                <div class="card-desc">
-                    ML applications for engineering signals, from tyre pressure monitoring to physics-informed models.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Intelligent tyre-pressure monitoring from vibration signals.</li>
-                    <li><i class="fas fa-chevron-right"></i> Physics-informed neural network for a damped pendulum.</li>
-                    <li><i class="fas fa-chevron-right"></i> Use of FFT, filtering, and feature engineering.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">Python</span>
-                    <span class="tag">Neural Networks</span>
-                    <span class="tag">Signal Processing</span>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-header">
-                    <i class="fas fa-folder folder-icon"></i>
-                    <h3>Python Script – Pressure Calculation</h3>
-                </div>
-                <div class="card-desc">
-                    Interactive notebook for calculating hydraulic pressure losses in pipe networks.
-                </div>
-                <ul class="card-specs">
-                    <li><i class="fas fa-chevron-right"></i> Implements Darcy–Weisbach and minor-loss models.</li>
-                    <li><i class="fas fa-chevron-right"></i> Automatically selects friction formula for laminar and turbulent regimes.</li>
-                    <li><i class="fas fa-chevron-right"></i> Simple UI for choosing fluids, pipes, and components.</li>
-                </ul>
-                <div class="tech-stack">
-                    <span class="tag highlight">Jupyter Notebook</span>
-                    <span class="tag">Fluid Mechanics</span>
-                    <span class="tag">Python</span>
-                </div>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- PROJECT DETAIL MODAL -->
-
-    <div id="project-modal" class="project-modal" aria-hidden="true">
-        <div class="project-modal-inner">
-            <button class="project-modal-close" aria-label="Close project detail">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 id="project-modal-title" class="project-modal-title"></h2>
-            <p id="project-modal-subtitle" class="project-modal-subtitle"></p>
-            <div id="project-modal-body" class="project-modal-body">
-                <!-- filled by JS -->
-            </div>
-        </div>
+<section class="container">
+    <div class="folder-structure">
+        <img src="assets/folder-structure.png" alt="Project Directory">
+        <p class="caption">Figure 0: Project Repository Overview</p>
     </div>
+</section>
 
-    <!-- DETAIL TEMPLATES -->
+<section id="projects" class="container">
+    <div class="grid">
 
-    <!-- PCBA TEST BENCH / STRAIN ANALYSIS DETAIL -->
-    <template id="project-pcba-tester">
-        <div>
-            <div class="project-highlights">
-                <p>
-                    ECU in-circuit and functional test bench developed for an automotive PCBA. 
-                    The goal is high probe coverage while keeping board deformation inside the
-                    recommended strain limit of roughly 400 µε at the BGA corners.
-                </p>
-
-                <p>
-                    Two stacked rosette gauges are mounted at critical BGA locations. 
-                    The measurement set-up uses an NI-9237 bridge module with LabVIEW for data capture,
-                    followed by MATLAB post-processing of the principal strains.
-                </p>
-
-                <ul>
-                    <li>Gas-spring driven top fixture with controlled touchdown on around 200 spring probes.</li>
-                    <li>Top G10 probe plate and steel frame checked with FEA for stress and deflection.</li>
-                    <li>Rosette placement based on JEDEC corner-land guidance for BGA packages.</li>
-                    <li>Full strain history recorded during worst-case load cases in the test sequence.</li>
-                    <li>Measured peak principal strain stays below the 400 µε guideline at all rosette points.</li>
-                </ul>
-
-                <div class="project-meta">
-                    Role: mechanical design of the fixture, FEA, strain-gauge layout, LabVIEW and MATLAB processing, and documentation.  
-                    Tools: SolidWorks, SolidWorks Simulation or Ansys, NI-9237, LabVIEW, MATLAB.
-                </div>
+        <article class="card" onclick="openModal()">
+            <div class="card-badge">01</div>
+            <h3>ECU Test Bench &amp; Strain Analysis</h3>
+            <div class="card-desc">
+                ICT/FCT production tester for an automotive ECU with validated touchdown strain on the PCBA.
             </div>
-        </div>
+            <div class="tags">
+                <span class="tag">View Report</span>
+                <span class="tag">SolidWorks</span>
+                <span class="tag">LabVIEW</span>
+            </div>
+        </article>
 
-        <div>
-            <div class="project-gallery">
-                <img src="assets/ECU Test Bench, strain analysis, labview/11.jpg"
-                     alt="Stacked strain gauge rosette bonded at BGA corner on ECU PCB">
-                <img src="assets/ECU Test Bench, strain analysis, labview/12.jpg"
-                     alt="ECU PCB layout with strain gauge rosette positions highlighted">
-                <img src="assets/ECU Test Bench, strain analysis, labview/10.jpg"
-                     alt="Guideline drawing for rosette placement at BGA corner land pad">
-                <img src="assets/ECU Test Bench, strain analysis, labview/1.jpg"
-                     alt="Overall ECU test fixture with top and bottom plates">
+        <article class="card">
+            <div class="card-badge">02</div>
+            <h3>End Effector Design</h3>
+            <div class="card-desc">Robotic handling system for 1000 V DC power modules.</div>
+            <div class="tags"><span class="tag">HV Safety</span><span class="tag">Robotics</span></div>
+        </article>
+
+        <article class="card">
+            <div class="card-badge">03</div>
+            <h3>Fixtures and Gauges</h3>
+            <div class="card-desc">Manufacturing fixtures and inspection gauges for repeatable assembly.</div>
+            <div class="tags"><span class="tag">GD&amp;T</span><span class="tag">Manufacturing</span></div>
+        </article>
+
+        <article class="card">
+            <div class="card-badge">04</div>
+            <h3>Machine Learning</h3>
+            <div class="card-desc">Physics-informed neural networks and tyre-pressure monitoring from vibration signals.</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">AI/ML</span></div>
+        </article>
+
+        <article class="card">
+            <div class="card-badge">05</div>
+            <h3>Industrial Cooling (DynaLab)</h3>
+            <div class="card-desc">Water–glycol loop simulation with pump and valve control in Simulink.</div>
+            <div class="tags"><span class="tag">Simulink</span><span class="tag">Thermal</span></div>
+        </article>
+
+        <article class="card">
+            <div class="card-badge">06</div>
+            <h3>Wind Turbine Cooling</h3>
+            <div class="card-desc">Thermal-hydraulic modelling of power-electronics cooling in a turbine nacelle.</div>
+            <div class="tags"><span class="tag">MATLAB</span><span class="tag">Fluids</span></div>
+        </article>
+
+        <article class="card">
+            <div class="card-badge">07</div>
+            <h3>Pressure Drop Calculator</h3>
+            <div class="card-desc">Interactive hydraulic loss calculator with pipe and component library.</div>
+            <div class="tags"><span class="tag">Jupyter</span><span class="tag">Python</span></div>
+        </article>
+
+        <article class="card">
+            <div class="card-badge">08</div>
+            <h3>Simulation (Ring Creep)</h3>
+            <div class="card-desc">Inner-ring creep analysis for a wind-turbine main bearing.</div>
+            <div class="tags"><span class="tag">Ansys APDL</span><span class="tag">FEA</span></div>
+        </article>
+
+    </div>
+</section>
+
+<!-- ECU TEST BENCH SINGLE-PAGE MODAL WITH INLINE FIGURES -->
+
+<div id="report-modal" class="modal">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+
+    <div class="modal-inner">
+        <header class="report-header">
+            <h1>Design &amp; Construction of PCBA Tester</h1>
+            <p class="report-meta">
+                Internship project at Tesla Giga Berlin · <span>PCBA ICT/FCT test bench with strain-safe touchdown</span>
+            </p>
+        </header>
+
+        <section class="report-section">
+            <h3>1. Project Context and Objectives</h3>
+            <p>
+                The assignment was to develop a production-ready test bench for a new automotive ECU PCBA.
+                The bench combines In-Circuit Test and Functional Test using about two hundred spring probes while keeping mechanical loading on the PCB within a 400&nbsp;µε principal-strain limit defined for BGA packages.
+            </p>
+            <p>
+                The fixture had to fit into an end-of-line station, meet CE requirements, and deliver repeatable touchdown without inducing solder-joint damage.
+                Strain measurement is used in the validation phase; series production uses the verified touchdown profile and process limits.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>2. System Architecture</h3>
+            <p>
+                The system follows a clamshell concept.
+                A moving top fixture carries the probe plate and slides vertically on linear bearings, while a bottom fixture supports and locates the ECU on a Delrin carrier.
+                Gas springs provide closing force and automatically open the fixture when power is removed.
+            </p>
+            <p>
+                The probe plate is machined from G10/FR-4 for electrical insulation and stiffness.
+                A primary locating pin defines the main datum; a slotted secondary pin removes rotation without over-constraining the plate.
+                Spacer blocks set the probe-to-board stand-off.
+                The bottom fixture uses hardened bushings, guide pins, static pushers, and capacitive sensors to guarantee repeatable seating of the ECU before touchdown.
+            </p>
+
+            <div class="inline-kpi">
+                <div class="kpi-chip"><strong>200+</strong> spring probes (ICT + FCT)</div>
+                <div class="kpi-chip"><strong>≤ 0.05&nbsp;mm</strong> probe-plate deflection budget</div>
+                <div class="kpi-chip"><strong>≤ 400&nbsp;µε</strong> principal-strain limit at BGA corner</div>
             </div>
 
-            <div class="project-gallery" style="margin-top:0.9rem;">
-                <img src="assets/ECU Test Bench, strain analysis, labview/13.jpg"
-                     alt="Principal strain over time for two rosettes during fixture touchdown">
-                <img src="assets/ECU Test Bench, strain analysis, labview/2.jpg"
-                     alt="Finite-element von Mises stress plot for probe plate">
-                <img src="assets/ECU Test Bench, strain analysis, labview/3.jpg"
-                     alt="Finite-element displacement plot for probe plate under load">
-                <img src="assets/ECU Test Bench, strain analysis, labview/4.jpg"
-                     alt="Exploded view of ECU fixture showing plates, shafts, and gas springs">
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/1.jpg" alt="Figure 1 – Datum and planarity">
+                    <figcaption>
+                        <span>Figure 1.</span>
+                        Datum and planarity controls with primary locating pin, slotted secondary pin, and probe-plate spacers.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/2.jpg" alt="Figure 2 – Top fixture exploded">
+                    <figcaption>
+                        <span>Figure 2.</span>
+                        Top fixture exploded view showing top plate, interface PCBA, probe plate, pogo field, static pushers, and standoffs.
+                    </figcaption>
+                </figure>
             </div>
-        </div>
-    </template>
 
-    <!-- END EFFECTOR DETAIL (FILL LATER IF YOU WANT MORE TEXT/IMAGES) -->
-    <template id="project-end-effector">
-        <div>
-            <div class="project-highlights">
-                <p>
-                    Robotic end effector designed for safe handling of insulated high-voltage power modules used
-                    in DC-DC converters and chargers.
-                </p>
-                <ul>
-                    <li>Mechanical interface matched to the robot flange and module housing.</li>
-                    <li>Creepage, clearance, and insulation paths respected in all clamping surfaces.</li>
-                    <li>Structure optimised for stiffness while staying under the allowed payload.</li>
-                </ul>
-                <div class="project-meta">
-                    Add your detailed design iterations, risk analysis, and test results here.
-                </div>
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/3.jpg" alt="Figure 3 – Bottom fixture">
+                    <figcaption>
+                        <span>Figure 3.</span>
+                        Bottom fixture with Delrin carrier, locating-pin bushings, static pushers, and capacitive presence sensors.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/4.jpg" alt="Figure 4 – Tester open">
+                    <figcaption>
+                        <span>Figure 4.</span>
+                        Overall tester in open position, with ECU seated in the lower fixture and the top assembly raised on shafts.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/5.jpg" alt="Figure 5 – Full exploded">
+                    <figcaption>
+                        <span>Figure 5.</span>
+                        Full exploded view including top plate collar, moving plate, shafts, gas springs, electromagnets, base plate, cable holders, and pinch protection.
+                    </figcaption>
+                </figure>
             </div>
-        </div>
-        <div>
-            <div class="project-gallery">
-                <img src="assets/end-effector/img1.jpg" alt="End effector view 1">
-                <img src="assets/end-effector/img2.jpg" alt="End effector view 2">
+        </section>
+
+        <section class="report-section">
+            <h3>3. Mechanical Design and Safety</h3>
+            <p>
+                The frame and base are aluminium for high stiffness and low mass.
+                Linear guides constrain motion to the Z-axis so that probes see primarily axial load.
+                External dampers shape the final part of the stroke and provide a slow, controlled touchdown without bounce.
+            </p>
+            <p>
+                A risk assessment identified pinch points, stored energy in gas springs, and electrical hazards.
+                The final design includes transparent pinch protection, interlocked access, an emergency-stop chain with safety relay, electromagnets that hold only at dwell, and a fail-safe return to the open position when power is lost.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>4. FEM-Based Design Verification</h3>
+            <p>
+                Finite Element models were created for the probe plate and for the shaft/base structure.
+                Only geometry relevant for stiffness and stress was retained.
+                Material properties came from datasheets, and mesh refinement studies kept changes in peak stress and deflection below five percent.
+            </p>
+            <p>
+                Under combined probe loads the G10 plate shows roughly 3.95&nbsp;MPa von-Mises stress with a maximum deflection of about 0.026&nbsp;mm.
+                A separate model for the shafts and base predicts about 8.5&nbsp;MPa maximum stress and less than 0.006&nbsp;mm displacement under full load.
+                These values fit well inside strength and alignment budgets.
+            </p>
+
+            <div class="inline-kpi">
+                <div class="kpi-chip"><strong>FoS ≈ 63</strong> on G10 plate stress</div>
+                <div class="kpi-chip"><strong>FoS ≈ 1.9</strong> on plate deflection limit</div>
+                <div class="kpi-chip"><strong>FoS &gt; 11</strong> on shaft stress screening limit</div>
             </div>
-        </div>
-    </template>
 
-    <!-- FIXTURES / GAUGES DETAIL -->
-    <template id="project-fixtures-gauges">
-        <div>
-            <div class="project-highlights">
-                <p>
-                    Collection of fixtures and gauges built to stabilise assembly quality and reduce rework.
-                </p>
-                <ul>
-                    <li>Go/no-go gauges for connector depth and position.</li>
-                    <li>Clamp fixtures for repeatable tightening sequences.</li>
-                    <li>Quick-change concepts for small-batch production lines.</li>
-                </ul>
-                <div class="project-meta">
-                    Replace this text with concrete projects and metrics if you want more detail.
-                </div>
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/6.jpg" alt="Figure 6 – Plate stress">
+                    <figcaption>
+                        <span>Figure 6.</span>
+                        Von-Mises stress in the G10 probe plate under probe spring loads; stress remains well below material capacity.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/7.jpg" alt="Figure 7 – Plate deflection">
+                    <figcaption>
+                        <span>Figure 7.</span>
+                        Total displacement of the probe plate; predicted peak deflection around 0.026&nbsp;mm.
+                    </figcaption>
+                </figure>
             </div>
-        </div>
-        <div>
-            <div class="project-gallery">
-                <img src="assets/fixtures/img1.jpg" alt="Fixture example 1">
-                <img src="assets/fixtures/img2.jpg" alt="Fixture example 2">
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/8.jpg" alt="Figure 8 – Shaft/base stress">
+                    <figcaption>
+                        <span>Figure 8.</span>
+                        Stress distribution on the shafts and base under gas-spring and plate loads.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/9.jpg" alt="Figure 9 – Shaft/base displacement">
+                    <figcaption>
+                        <span>Figure 9.</span>
+                        Displacement field for the same structure, confirming sub-0.006&nbsp;mm movement at critical interfaces.
+                    </figcaption>
+                </figure>
             </div>
-        </div>
-    </template>
+        </section>
 
-    <footer class="footer container">
-        <h2>Let's Connect</h2>
-        <p style="color: var(--text-muted); margin-top: 1rem;">
-            Open for opportunities in mechanical design and simulation.
-        </p>
-        <a href="mailto:your.email@example.com" class="contact-btn">Send Email</a>
-        <div style="margin-top: 3rem; font-size: 0.8rem; color: #64748b;">
-            &copy; 2024 Deepak Petchimuthu. Built with Code.
-        </div>
-    </footer>
+        <section class="report-section">
+            <h3>5. Strain-Gauge Strategy on the PCBA</h3>
+            <p>
+                To validate touchdown loads, a 0°/45°/90° foil-gauge rosette is bonded near the corner of the main BGA.
+                This position is the critical hot-spot for board bending and solder-joint damage, and matches layout guidance for board-level reliability.
+            </p>
+            <p>
+                The rosette is centred on the corner land pad; solder removal is restricted to the minimum area needed for bonding.
+                Gauge axes follow the board reference directions, and the lead-out wires use strain-relief loops to avoid parasitic bending near the grid.
+            </p>
 
-    <script>
-        const PROJECT_CONFIG = {
-            'pcba-tester': {
-                templateId: 'project-pcba-tester',
-                subtitle: 'Production ECU ICT/FCT Fixture with Strain-Validated Touchdown'
-            },
-            'end-effector': {
-                templateId: 'project-end-effector',
-                subtitle: 'Robotic End Effector for High-Voltage Power Modules'
-            },
-            'fixtures-gauges': {
-                templateId: 'project-fixtures-gauges',
-                subtitle: 'Assembly Fixtures and Go/No-Go Gauges'
-            }
-        };
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/10.jpg" alt="Figure 10 – Rosette layout diagram">
+                    <figcaption>
+                        <span>Figure 10.</span>
+                        Layout principle for placing the rosette at the BGA corner land pad with limited pad removal.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/11.jpg" alt="Figure 11 – Bonded rosette">
+                    <figcaption>
+                        <span>Figure 11.</span>
+                        Photograph of the bonded stacked rosette on the ECU, including soldered tabs and lead routing.
+                    </figcaption>
+                </figure>
+            </div>
 
-        const modal = document.getElementById('project-modal');
-        const modalTitle = document.getElementById('project-modal-title');
-        const modalSubtitle = document.getElementById('project-modal-subtitle');
-        const modalBody = document.getElementById('project-modal-body');
-        const closeBtn = document.querySelector('.project-modal-close');
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/12.jpg" alt="Figure 12 – PCB layout with gauges">
+                    <figcaption>
+                        <span>Figure 12.</span>
+                        PCB layout snapshot showing BGA position, periphery support, test points, and rosette locations.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
 
-        function openProjectModal(card) {
-            const projectId = card.getAttribute('data-project-id');
-            const config = PROJECT_CONFIG[projectId];
-            if (!config) return;
+        <section class="report-section">
+            <h3>6. Data Acquisition and LabVIEW Application</h3>
+            <p>
+                Strain signals are captured by an NI&nbsp;9237 bridge-input module in quarter-bridge mode.
+                LabVIEW reads the channels, converts mV/V to strain using the gauge factor, and displays live traces for each rosette grid together with computed principal strains.
+            </p>
+            <p>
+                The application initialises and shunt-calibrates the channels, zeros the gauges with the fixture open, records data during approach and release, and logs peak values with full waveforms for later analysis.
+                Additional channels track actuator state so that mechanical events line up with strain features.
+            </p>
+        </section>
 
-            const template = document.getElementById(config.templateId);
-            if (!template) return;
+        <section class="report-section">
+            <h3>7. Results and Validation</h3>
+            <p>
+                Ten ECUs were cycled five times each.
+                The highest measured principal strain at the BGA corner is about 345&nbsp;µε; the variation across all touchdowns stays within roughly ±10&nbsp;µε.
+                Even the largest transient remains below the 400&nbsp;µε limit, leaving margin for component and process variation.
+            </p>
+            <p>
+                FEM predicts around 360&nbsp;µε at the same location, which matches the measurements to within a few percent.
+                No pad damage, cracking, or electrical drift was observed.
+                The tester is released for end-of-line operation with specified gas-spring selection, damper settings, and touchdown travel.
+            </p>
 
-            modalTitle.textContent = card.querySelector('h3').textContent;
-            modalSubtitle.textContent = config.subtitle || '';
-            
-            modalBody.innerHTML = '';
-            modalBody.appendChild(template.content.cloneNode(true));
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/13.jpg" alt="Figure 13 – Principal strain histories">
+                    <figcaption>
+                        <span>Figure 13.</span>
+                        Principal-strain time histories from multiple touchdowns at both rosette locations, showing a narrow band of transients and low residual strain.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
 
-            modal.classList.add('open');
-            modal.setAttribute('aria-hidden', 'false');
-        }
+        <section class="report-section">
+            <h3>8. Takeaways</h3>
+            <p>
+                The project combines clamshell-fixture design, FEM verification, and rosette-based strain measurement on the PCB.
+                The resulting test bench delivers full ICT/FCT coverage while keeping engagement strain inside the specified limit, and the workflow is reusable for future ECU test systems.
+            </p>
+        </section>
+    </div>
+</div>
 
-        function closeProjectModal() {
-            modal.classList.remove('open');
-            modal.setAttribute('aria-hidden', 'true');
-        }
+<footer class="footer container" style="border-top:1px solid rgba(255,255,255,0.05); padding:4rem 0; text-align:center; margin-top:2rem;">
+    <h2>Let's Connect</h2>
+    <p style="color: var(--text-muted); margin-top: 1rem;">
+        Open for opportunities in mechanical design and simulation.
+    </p>
+    <a href="mailto:your.email@example.com"
+       style="display:inline-block; background-color:var(--accent); color:var(--bg-body); padding:0.8rem 2rem; border-radius:50px; font-weight:700; margin-top:1.5rem;">
+        Send Email
+    </a>
+    <div style="margin-top: 3rem; font-size: 0.8rem; color: #64748b;">
+        &copy; 2024 Deepak Petchimuthu. Built with Code.
+    </div>
+</footer>
 
-        document.querySelectorAll('.card[data-project-id]').forEach(card => {
-            card.addEventListener('click', () => openProjectModal(card));
-        });
-
-        closeBtn.addEventListener('click', closeProjectModal);
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeProjectModal();
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('open')) {
-                closeProjectModal();
-            }
-        });
-    </script>
+<script>
+    function openModal() {
+        document.getElementById('report-modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+        document.getElementById('report-modal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 
 </body>
 </html>
