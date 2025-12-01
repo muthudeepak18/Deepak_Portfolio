@@ -106,7 +106,7 @@
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             background: #020617;
-            height: 160px; /* Fixed height for consistency */
+            height: 160px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -514,7 +514,7 @@
         <header class="report-header">
             <h1>End-Effector for High-Voltage Power Modules</h1>
             <p class="report-meta">
-                Mechanical design of a robotic gripper for <span>1000 V DC</span> applications[cite: 1, 33].
+                Mechanical design of a robotic gripper for <span>1000 V DC</span> applications.
             </p>
         </header>
 
@@ -534,17 +534,17 @@
                 The end-effector is designed to handle DC-DC residential energy converters and AC-DC fast-charging stages[cite: 10].
             </p>
             <div class="inline-kpi">
-                <div class="kpi-chip">Voltage Max<br><strong>1000 V DC</strong></div>
-                <div class="kpi-chip">Current (Nominal)<br><strong>150 A</strong></div>
-                <div class="kpi-chip">Peak Current (3s)<br><strong>300 A</strong></div>
-                <div class="kpi-chip">Clearance<br><strong>&ge; 12 mm</strong></div>
+                <div class="kpi-chip">Voltage Max<br><strong>1000 V DC</strong> [cite: 54]</div>
+                <div class="kpi-chip">Current (Nominal)<br><strong>150 A</strong> [cite: 52]</div>
+                <div class="kpi-chip">Peak Current (3s)<br><strong>300 A</strong> [cite: 53]</div>
+                <div class="kpi-chip">Clearance<br><strong>&ge; 12 mm</strong> [cite: 55]</div>
             </div>
         </section>
 
         <section class="report-section">
-            <h3>Mechanical Architecture</h3>
+            <h3>Mechanical Architecture &amp; Images</h3>
             <p>
-                The system uses two U-shaped aluminum forks with tapered entries to guide the tool onto the DUT (Device Under Test)[cite: 71, 72]. To prevent damage to the copper lugs or plastic housing, the tip radius is set to 1.5 mm[cite: 76].
+                The system uses two U-shaped aluminum forks with tapered entries to guide the tool onto the DUT (Device Under Test)[cite: 72]. To prevent damage to the copper lugs or plastic housing, the tip radius is set to 1.5 mm[cite: 76].
             </p>
             <p>
                 A visual alignment mark (green stripe) on the front serves as a "seat line" to indicate when the tool is fully engaged and safe to energize[cite: 70].
@@ -555,14 +555,14 @@
                     <img src="assets/End effector design/1.jpg" alt="End effector hardware" class="contain-img">
                     <figcaption>
                         <span>Figure 1.</span>
-                        The manufactured end-effector featuring twin aluminum guiding forks and a rear multi-pin interface. Note the green alignment stripe for visual safety confirmation[cite: 41, 62].
+                        The manufactured end-effector featuring twin aluminum guiding forks and a rear multi-pin interface[cite: 41]. Note the green alignment stripe for visual safety confirmation.
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
                     <img src="assets/End effector design/2.jpg" alt="Target HV Assembly" class="contain-img">
                     <figcaption>
                         <span>Figure 2.</span>
-                        The target HV fuse and busbar assembly. The white plastic cover and lower copper contact row define the required fork spacing[cite: 43, 44].
+                        The target HV fuse and busbar assembly. The white plastic cover and lower copper contact row define the required fork spacing[cite: 43].
                     </figcaption>
                 </figure>
             </div>
@@ -574,7 +574,7 @@
                 To mitigate the risk of shorting adjacent HV rails, the design includes insulating fork caps so only the inner spring is live[cite: 115].
             </p>
             <p>
-                Verification steps include a dimensional check of fork spacing vs. DUT plastic, contact resistance measurements at 100 A (target $<100~\mu\Omega$), and a dielectric withstand test at 2 kV DC for 1 minute[cite: 120, 121, 123].
+                Verification steps include a dimensional check of fork spacing vs. DUT plastic, contact resistance measurements at 100 A (target $<100~\mu\Omega$), and a dielectric withstand test at 2 kV DC for 1 minute [cite: 120-123].
             </p>
         </section>
     </div>
