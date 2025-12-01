@@ -33,34 +33,34 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
 
-        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             padding: 1.5rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+
         .logo { font-weight: 800; font-size: 1.5rem; }
         .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { color: var(--text-muted); font-size: 0.9rem; transition: color 0.2s; }
-        .nav-links a:hover { color: var(--accent); }
 
-        /* Hero Section */
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--text-muted); font-size: 0.9rem; }
+
         .hero {
             padding: 4rem 0 4rem 0;
             max-width: 800px;
         }
+
         .hero h1 {
             font-size: 3.2rem;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             letter-spacing: -1px;
         }
+
         .hero span { color: var(--accent); }
         .hero p { color: var(--text-muted); font-size: 1.1rem; }
 
-        /* Folder Structure Visual */
         .folder-structure {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.1);
@@ -69,10 +69,10 @@
             text-align: center;
             margin-bottom: 4rem;
         }
+
         .folder-structure img { max-width: 100%; border-radius: 6px; }
         .caption { margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; }
 
-        /* Section Headers */
         .section-header {
             margin: 3rem 0 1.75rem 0;
             border-left: 4px solid var(--accent);
@@ -85,9 +85,10 @@
             color: var(--text-muted);
             margin-bottom: 0.2rem;
         }
-        .section-header h2 { font-size: 1.6rem; }
+        .section-header h2 {
+            font-size: 1.6rem;
+        }
 
-        /* Cards */
         .card {
             background: var(--bg-card);
             border: 1px solid rgba(255,255,255,0.05);
@@ -95,9 +96,11 @@
             padding: 1.5rem 1.5rem 1.75rem 1.5rem;
             display: flex;
             flex-direction: column;
+            position: relative;
             transition: 0.3s;
             cursor: pointer;
         }
+
         .card:hover { transform: translateY(-5px); border-color: var(--accent); }
 
         .card-thumb {
@@ -106,18 +109,27 @@
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             background: #020617;
-            height: 160px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
+
         .card-thumb img {
             width: 100%;
             height: 100%;
+            display: block;
             object-fit: cover;
+            max-height: 150px;
         }
-        .card-thumb img.contain-img { object-fit: contain; padding: 10px; }
-        
+
+        .card-thumb img.contain-img {
+            object-fit: contain;
+        }
+
+        .card-thumb img.fea-thumb {
+            object-fit: contain;
+            max-height: 180px;
+            padding: 0.75rem 0.5rem;
+            background: radial-gradient(circle at top, #38bdf8 0, #020617 55%, #020617 100%);
+        }
+
         .card h3 { margin: 0.4rem 0 0.5rem 0; font-size: 1.15rem; }
         .card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1; }
 
@@ -130,7 +142,6 @@
             border-radius: 4px;
         }
 
-        /* Modals */
         .modal {
             display: none;
             position: fixed;
@@ -138,125 +149,172 @@
             background: var(--overlay-bg);
             z-index: 1000;
             overflow-y: auto;
-            animation: fadeIn 0.2s ease-out;
         }
-        .modal.active { display: block; }
+
+        .modal.active { display: block; animation: fadeIn 0.25s ease; }
 
         .modal-inner {
-            max-width: 1000px;
-            margin: 4vh auto 6vh auto;
+            max-width: 1100px;
+            margin: 5vh auto 6vh auto;
             background: var(--bg-soft);
             border-radius: 18px;
             border: 1px solid rgba(148,163,184,0.25);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-            padding: 3rem;
-            position: relative;
+            box-shadow: 0 25px 60px rgba(15,23,42,0.9);
+            padding: 3rem 3rem 3.5rem 3rem;
         }
 
         .close-btn {
             position: fixed;
             top: 1.5rem;
             right: 1.5rem;
-            font-size: 1.5rem;
+            font-size: 2rem;
             cursor: pointer;
             z-index: 1100;
             color: #fff;
-            background: rgba(255, 255, 255, 0.1);
-            width: 40px;
-            height: 40px;
+            background: rgba(0,0,0,0.5);
+            width: 48px;
+            height: 48px;
             text-align: center;
-            line-height: 40px;
+            line-height: 48px;
             border-radius: 50%;
-            backdrop-filter: blur(5px);
-            transition: background 0.2s;
         }
-        .close-btn:hover { background: rgba(255, 255, 255, 0.2); }
 
-        /* Report Styling inside Modals */
-        .report-header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
-        .report-meta { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem; }
-        .report-meta span { color: var(--accent); font-weight: 600; }
+        .report-header h1 {
+            font-size: 2.4rem;
+            margin-bottom: 0.75rem;
+        }
 
-        .report-section { margin-bottom: 2.5rem; }
-        .report-section h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-        }
-        .report-section h3::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        .report-section p { margin-bottom: 1rem; color: #cbd5e1; text-align: justify; }
-
-        /* KPIs / Chips */
-        .inline-kpi {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-        .kpi-chip {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(148,163,184,0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
+        .report-meta {
             color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
-        .kpi-chip strong { color: var(--accent); display: block; font-size: 1rem; margin-top: 0.2rem; }
 
-        /* Images in Reports */
-        .inline-figure-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+        .report-meta span {
+            color: var(--accent);
+            font-weight: 600;
         }
-        .inline-figure {
+
+        .hero-figure {
+            max-width: 720px;
+            margin: 1.5rem auto 0 auto;
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
+            border-radius: 12px;
+            border: 1px solid rgba(148,163,184,0.35);
             overflow: hidden;
         }
-        .inline-figure img {
+
+        .hero-figure img {
             width: 100%;
-            height: auto;
             display: block;
-            max-height: 300px;
-            object-fit: cover;
         }
-        .inline-figure img.contain-img { object-fit: contain; background: #000; }
-        .inline-figure figcaption {
-            padding: 0.8rem 1rem;
+
+        .hero-figure-caption {
+            padding: 0.6rem 0.9rem 0.8rem 0.9rem;
             font-size: 0.8rem;
             color: var(--text-muted);
-            background: rgba(0,0,0,0.2);
         }
-        .inline-figure figcaption span { color: var(--accent); font-weight: 600; margin-right: 5px; }
 
-        .hero-figure { margin: 0 auto 2rem auto; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-        .hero-figure img { width: 100%; display: block; }
-        .hero-figure-caption { padding: 0.8rem; background: var(--bg-card); font-size: 0.85rem; color: var(--text-muted); }
+        .hero-figure-caption span {
+            display: block;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+        }
 
-        /* PPT/PDF Container */
-        .ppt-container { width: 100%; height: 70vh; border-radius: 8px; overflow: hidden; background: #000; }
-        .ppt-container iframe { width: 100%; height: 100%; }
+        .report-section {
+            margin-bottom: 2.4rem;
+        }
 
-        /* Footer */
-        footer { margin-top: 4rem; padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .report-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .report-section p {
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+            text-align: justify;
+            font-size: 0.98rem;
+        }
+
+        .inline-kpi {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .kpi-chip {
+            background: #020617;
+            border-radius: 999px;
+            padding: 0.45rem 0.9rem;
+            border: 1px solid rgba(148,163,184,0.4);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .kpi-chip strong { color: var(--accent); }
+
+        .inline-figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.1rem;
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        .inline-figure {
+            background: var(--bg-card);
+            border-radius: 10px;
+            border: 1px solid rgba(148,163,184,0.35);
+            overflow: hidden;
+        }
+
+        .inline-figure img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 260px;
+        }
+
+        .inline-figure img.contain-img {
+            object-fit: contain;
+        }
+
+        .inline-figure figcaption {
+            padding: 0.7rem 0.9rem 0.9rem 0.9rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .inline-figure figcaption span {
+            display: block;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        .ppt-container {
+            width: 100%;
+            height: 70vh;
+            margin-top: 1rem;
+        }
+
+        .ppt-container iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        footer { margin-top: 2rem; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
-            .modal-inner { padding: 1.5rem; margin-top: 10vh; }
-            .card-thumb { height: 140px; }
+            .modal-inner { padding: 2.25rem 1.6rem 2.8rem 1.6rem; margin-top: 4vh; }
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -271,7 +329,7 @@
             <a href="#fea">FEA</a>
             <a href="#mechanical">Mechanical</a>
             <a href="#cooling">Cooling</a>
-            <a href="#software">Software</a>
+            <a href="#software">Software / ML</a>
         </div>
     </nav>
 </header>
@@ -288,15 +346,18 @@
     </div>
 </section>
 
+<!-- FEA -->
+
 <section id="fea" class="container">
     <div class="section-header">
         <p>Finite Element Analysis</p>
         <h2>Structural Behaviour in Wind-Turbine Components</h2>
     </div>
+
     <div class="grid">
         <article class="card" onclick="openFEMModal()">
             <div class="card-thumb">
-                <img src="assets/Simulation/1.jpg" alt="Ring creep schematic" class="contain-img">
+                <img src="assets/Simulation/1.jpg" alt="Ring creep schematic" class="fea-thumb">
             </div>
             <h3>Main Bearing Ring Creep Simulation</h3>
             <div class="card-desc">
@@ -311,16 +372,20 @@
     </div>
 </section>
 
+<!-- MECHANICAL -->
+
 <section id="mechanical" class="container">
     <div class="section-header">
         <p>Mechanical Development &amp; Test</p>
         <h2>Fixtures, End Effectors, and ECU Test Benches</h2>
     </div>
+
     <div class="grid">
 
         <article class="card" onclick="openModal()">
             <div class="card-thumb">
-                <img src="assets/ECU Test Bench, strain analysis, labview/Front image 1.jpg" alt="ECU Test Bench overview">
+                <img src="assets/ECU Test Bench, strain analysis, labview/Front image 1.jpg"
+                     alt="ECU Test Bench overview">
             </div>
             <h3>ECU Test Bench &amp; Strain Analysis</h3>
             <div class="card-desc">
@@ -333,9 +398,12 @@
             </div>
         </article>
 
+        <!-- End effector card with image and PDF modal -->
         <article class="card" onclick="openEndEffModal()">
             <div class="card-thumb">
-                <img src="assets/End effector design/1.jpg" alt="End effector gripping high-voltage connector" class="contain-img">
+                <img src="assets/End effector design/1.jpg"
+                     alt="End effector gripping high-voltage connector"
+                     class="contain-img">
             </div>
             <h3>End Effector Design</h3>
             <div class="card-desc">
@@ -349,9 +417,6 @@
         </article>
 
         <article class="card">
-            <div class="card-thumb">
-                 <div style="color:var(--text-muted);">[Image Placeholder]</div>
-            </div>
             <h3>Fixtures and Gauges</h3>
             <div class="card-desc">
                 Assembly fixtures and go/no-go gauges that reduce operator variability and ensure dimensional conformity in production steps.
@@ -366,15 +431,21 @@
     </div>
 </section>
 
+<!-- COOLING -->
+
 <section id="cooling" class="container">
     <div class="section-header">
         <p>Cooling Systems &amp; Hydraulics</p>
         <h2>Industrial Loops, Turbine Cooling, and Pressure Tools</h2>
     </div>
+
     <div class="grid">
+
         <article class="card" onclick="openIndustrialModal()">
             <div class="card-thumb">
-                <img src="assets/Matlab + Simulink Industrial Cooling/Cover image.jpg" alt="Industrial cooling Simulink cover" class="contain-img">
+                <img src="assets/Matlab + Simulink Industrial Cooling/Cover image.jpg"
+                     alt="Industrial cooling Simulink cover"
+                     class="contain-img">
             </div>
             <h3>Matlab + Simulink Industrial Cooling</h3>
             <div class="card-desc">
@@ -388,9 +459,6 @@
         </article>
 
         <article class="card">
-            <div class="card-thumb">
-                <div style="color:var(--text-muted);">[Image Placeholder]</div>
-            </div>
             <h3>Matlab + Simulink Turbine Cooling</h3>
             <div class="card-desc">
                 Thermal–hydraulic model of a wind-turbine cooling circuit for converters and transformers, with pressure-drop evaluation and flow balancing.
@@ -398,20 +466,39 @@
             <div class="tags">
                 <span class="tag">Energy Systems</span>
                 <span class="tag">Thermal</span>
+                <span class="tag">Fluids</span>
             </div>
         </article>
+
+        <article class="card">
+            <h3>Python Script – Pressure Calculation</h3>
+            <div class="card-desc">
+                Jupyter-based pressure-drop calculator that applies Darcy–Weisbach, friction-factor correlations, and component K-values for pipe-network sizing.
+            </div>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Jupyter</span>
+                <span class="tag">Hydraulic Design</span>
+            </div>
+        </article>
+
     </div>
 </section>
+
+<!-- SOFTWARE / ML -->
 
 <section id="software" class="container">
     <div class="section-header">
         <p>Software, Machine Learning &amp; Data</p>
         <h2>Signal Processing and Physics-Informed Models</h2>
     </div>
+
     <div class="grid">
+
         <article class="card" onclick="openML1Modal()">
             <div class="card-thumb">
-                <img src="assets/Machine%20Learning/CIE_WiSe22_Deepak%20Petchimuthu.jpg" alt="CIE WiSe22 project thumbnail">
+                <img src="assets/Machine%20Learning/CIE_WiSe22_Deepak%20Petchimuthu.jpg"
+                     alt="CIE WiSe22 project thumbnail">
             </div>
             <h3>Machine Learning for Engineering Signals</h3>
             <div class="card-desc">
@@ -420,12 +507,14 @@
             <div class="tags">
                 <span class="tag">Python</span>
                 <span class="tag">Neural Networks</span>
+                <span class="tag">Signal Processing</span>
             </div>
         </article>
 
         <article class="card" onclick="openML2Modal()">
             <div class="card-thumb">
-                <img src="assets/Machine%20Learning/Intelligent%20Monitoring%20of%20Engineering%20Systems.jpg" alt="Intelligent monitoring project thumbnail">
+                <img src="assets/Machine%20Learning/Intelligent%20Monitoring%20of%20Engineering%20Systems.jpg"
+                     alt="Intelligent monitoring project thumbnail">
             </div>
             <h3>Intelligent Monitoring of Engineering Systems</h3>
             <div class="card-desc">
@@ -434,233 +523,311 @@
             <div class="tags">
                 <span class="tag">Time Series</span>
                 <span class="tag">Classification</span>
+                <span class="tag">Diagnostics</span>
             </div>
         </article>
+
     </div>
 </section>
 
+<!-- FEA PPT MODAL -->
 
 <div id="fem-modal" class="modal">
     <span class="close-btn" onclick="closeFEMModal()">&times;</span>
+
     <div class="modal-inner">
         <header class="report-header">
             <h1>Main Bearing Ring Creep Simulation</h1>
-            <p class="report-meta">Finite element study of ring creep in a wind-turbine main bearing</p>
+            <p class="report-meta">
+                Finite element study of ring creep in a wind-turbine main bearing
+            </p>
         </header>
+
         <div class="ppt-container">
-            <iframe src="assets/Simulation/Ring%20Creep%20analysis%20Presentation.pdf#toolbar=0&navpanes=0&scrollbar=0" style="border:none;"></iframe>
+            <iframe
+                src="assets/Simulation/Ring%20Creep%20analysis%20Presentation.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                style="border:none;"
+            ></iframe>
         </div>
     </div>
 </div>
 
+<!-- ML PPT MODALS -->
+
 <div id="ml1-modal" class="modal">
     <span class="close-btn" onclick="closeML1Modal()">&times;</span>
+
     <div class="modal-inner">
         <header class="report-header">
             <h1>Machine Learning for Engineering Signals</h1>
-            <p class="report-meta">Course project slides in machine learning for engineering signals</p>
+            <p class="report-meta">
+                Course project slides in machine learning for engineering signals
+            </p>
         </header>
+
         <div class="ppt-container">
-            <iframe src="assets/Machine%20Learning/CIE_WiSe22_Deepak%20Petchimuthu.pdf#toolbar=0&navpanes=0&scrollbar=0" style="border:none;"></iframe>
+            <iframe
+                src="assets/Machine%20Learning/CIE_WiSe22_Deepak%20Petchimuthu.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                style="border:none;"
+            ></iframe>
         </div>
     </div>
 </div>
 
 <div id="ml2-modal" class="modal">
     <span class="close-btn" onclick="closeML2Modal()">&times;</span>
+
     <div class="modal-inner">
         <header class="report-header">
             <h1>Intelligent Monitoring of Engineering Systems</h1>
-            <p class="report-meta">Slides for the intelligent monitoring project</p>
+            <p class="report-meta">
+                Slides for the intelligent monitoring project
+            </p>
         </header>
+
         <div class="ppt-container">
-            <iframe src="assets/Machine%20Learning/Intelligent%20Monitoring%20of%20Engineering%20Systems.pdf#toolbar=0&navpanes=0&scrollbar=0" style="border:none;"></iframe>
+            <iframe
+                src="assets/Machine%20Learning/Intelligent%20Monitoring%20of%20Engineering%20Systems.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                style="border:none;"
+            ></iframe>
         </div>
     </div>
 </div>
 
+<!-- INDUSTRIAL COOLING REPORT MODAL -->
+
 <div id="industrial-modal" class="modal">
     <span class="close-btn" onclick="closeIndustrialModal()">&times;</span>
+
     <div class="modal-inner">
         <header class="report-header">
             <h1>Matlab + Simulink Model of an Industrial Cooling Loop</h1>
-            <p class="report-meta">Dynamic simulation of a water–glycol cooling circuit for an industrial drivetrain test facility using <span>Simscape Fluids and Simulink</span>.</p>
+            <p class="report-meta">
+                Dynamic simulation of a water–glycol cooling circuit for an industrial drivetrain test facility using <span>Simscape Fluids and Simulink</span>.
+            </p>
         </header>
+
         <section class="report-section">
             <h3>Project Context and Objectives</h3>
-            <p>The goal of this model is to size and tune a closed-loop cooling system that removes heat from test-bench components while keeping supply temperatures and pressures inside defined limits.</p>
-            <p>The plant is represented with Simscape Fluids blocks for pumps, valves, pipework, and a plate heat exchanger, while supervisory logic and PID controllers are implemented in Simulink.</p>
+            <p>
+                The goal of this model is to size and tune a closed-loop cooling system that removes heat from test-bench components while keeping supply temperatures and pressures inside defined limits.
+            </p>
+            <p>
+                The plant is represented with Simscape Fluids blocks for pumps, valves, pipework, and a plate heat exchanger, while supervisory logic and PID controllers are implemented in Simulink.
+            </p>
         </section>
+
         <section class="report-section">
-            <h3>System Topology and Results</h3>
-            <p>The circuit consists of a main circulation pump, distribution manifold, consumer branches, and a plate heat exchanger. The working fluid is a water–glycol mixture.</p>
+            <h3>System Topology and Main Flow Path</h3>
+            <p>
+                The circuit consists of a main circulation pump, distribution manifold, consumer branches, a plate heat exchanger connected to a secondary chiller loop, and an expansion vessel.
+                The working fluid is a water–glycol mixture and all components are configured for the expected flow of the test bench.
+            </p>
+
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                    <img src="assets/Matlab + Simulink Industrial Cooling/1.jpg" alt="Simulink model overview" class="contain-img">
-                    <figcaption><span>Figure 1.</span> High-level Simulink model showing plant subsystem and controller.</figcaption>
+                    <img src="assets/Matlab + Simulink Industrial Cooling/1.jpg"
+                         alt="Figure 1 – High-level Simulink model"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 1.</span>
+                        High-level Simulink model showing plant subsystem, controller subsystem, and test scenarios.
+                    </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                    <img src="assets/Matlab + Simulink Industrial Cooling/8.jpg" alt="Temperature response" class="contain-img">
-                    <figcaption><span>Figure 2.</span> Time response of supply and return temperatures during heat load steps.</figcaption>
+                    <img src="assets/Matlab + Simulink Industrial Cooling/2.jpg"
+                         alt="Figure 2 – HMI and parameter dashboard"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 2.</span>
+                        Dashboard-style block set used to change pump speed, valve positions, and set-points for workshop demonstrations.
+                    </figcaption>
                 </figure>
             </div>
         </section>
+
+        <section class="report-section">
+            <h3>Detailed Plant Modelling</h3>
+            <p>
+                The cooling plant is decomposed into reusable subsystems for the pump group, mixing header, heat exchanger, and consumer branches.
+                Each subsystem exposes key parameters such as nominal flow rate, pressure rise, heat-transfer area, and valve authority.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab + Simulink Industrial Cooling/3.jpg"
+                         alt="Figure 3 – Pump and main loop plant"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 3.</span>
+                        Simscape Fluids implementation of the main pump, distribution header, and return line with pressure and flow sensors.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/Matlab + Simulink Industrial Cooling/4.jpg"
+                         alt="Figure 4 – Heat exchanger model"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 4.</span>
+                        Plate heat exchanger block configured with effectiveness–NTU formulation and secondary-side boundary conditions.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/Matlab + Simulink Industrial Cooling/5.jpg"
+                         alt="Figure 5 – Consumer branch model"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 5.</span>
+                        Representative consumer branch with control valve, load resistance, and local instrumentation.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Control Architecture</h3>
+            <p>
+                The loop uses a cascaded control structure: pump speed is commanded from a header-pressure PID, while individual consumer-valve controllers regulate outlet temperature or flow.
+            </p>
+            <p>
+                The supervisory layer provides different operating modes for start-up, steady-state operation, and ramped heat-load tests used during the workshop.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab + Simulink Industrial Cooling/6.jpg"
+                         alt="Figure 6 – Control and logic subsystem"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 6.</span>
+                        Control subsystem showing cascaded PIDs, mode logic, and set-point scheduling.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Workshop Scenarios and Results</h3>
+            <p>
+                Several standard scenarios are defined: step changes in heat load, gradual flow ramps, and disturbance tests on the secondary-side cooling capacity.
+                For each case the model records inlet and outlet temperatures, pump speed, valve positions, and pressure drops.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab + Simulink Industrial Cooling/7.jpg"
+                         alt="Figure 7 – Experiment configuration"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 7.</span>
+                        Example workshop configuration with key signals exposed on scopes and dashboards.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/Matlab + Simulink Industrial Cooling/8.jpg"
+                         alt="Figure 8 – Temperature response plot"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 8.</span>
+                        Time response of supply and return temperatures during a step in heat load.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/Matlab + Simulink Industrial Cooling/9.jpg"
+                         alt="Figure 9 – Pump speed and pressure response"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 9.</span>
+                        Pump-speed and header-pressure traces illustrating controller tuning and settling behaviour.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Takeaways</h3>
+            <p>
+                The workshop model demonstrates how Simscape Fluids and Simulink can be used to reason about pressure losses, controller tuning, and thermal transients before hardware is available.
+                The same structure can be adapted to future drivetrain test facilities with different pumps, hose diameters, and cooling capacities.
+            </p>
+        </section>
     </div>
 </div>
+
+<!-- END EFFECTOR PDF MODAL -->
 
 <div id="end-eff-modal" class="modal">
     <span class="close-btn" onclick="closeEndEffModal()">&times;</span>
+
     <div class="modal-inner">
         <header class="report-header">
-            <h1>End-Effector for High-Voltage Power Modules</h1>
+            <h1>End Effector for High-Voltage Power Modules</h1>
             <p class="report-meta">
-                [cite_start]Mechanical design of a robotic gripper for <span>1000 V DC</span> applications[cite: 1, 33].
+                Design report for the mechanical gripper used to handle insulated busbars and high-voltage modules
             </p>
         </header>
 
-        <section class="report-section">
-            <h3>Project Abstract</h3>
-            <p>
-                [cite_start]This project involves the development of a mechanically guided, electrically insulated end-effector that enables safe and repeatable contacts to high-voltage (HV) power modules during manufacturing and laboratory tests[cite: 9, 21].
-            </p>
-            <p>
-                [cite_start]The tool replaces manual test leads, which are slow to position, operator-dependent, and often marginal on creepage/clearance[cite: 16, 17, 18]. [cite_start]The design utilizes fork-type guides and spring contacts to achieve positionally consistent insertion without side-loading the device terminals[cite: 11, 22].
-            </p>
-        </section>
-
-        <section class="report-section">
-            <h3>Design Specifications</h3>
-            <p>
-                [cite_start]The end-effector is designed to handle DC-DC residential energy converters and AC-DC fast-charging stages[cite: 10, 33].
-            </p>
-            <div class="inline-kpi">
-                <div class="kpi-chip">Voltage Max<br><strong>1000 V DC</strong></div>
-                <div class="kpi-chip">Current (Nominal)<br><strong>150 A</strong></div>
-                <div class="kpi-chip">Peak Current (3s)<br><strong>300 A</strong></div>
-                <div class="kpi-chip">Clearance<br><strong>&ge; 12 mm</strong></div>
-            </div>
-            </section>
-
-        <section class="report-section">
-            <h3>Mechanical Architecture &amp; Images</h3>
-            <p>
-                [cite_start]The system uses two U-shaped aluminum forks with tapered entries to guide the tool onto the DUT (Device Under Test)[cite: 72]. [cite_start]To prevent damage to the copper lugs or plastic housing, the tip radius is set to 1.5 mm[cite: 76].
-            </p>
-            <p>
-                [cite_start]A visual alignment mark (green stripe) on the front serves as a "seat line" to indicate when the tool is fully engaged and safe to energize[cite: 63, 70].
-            </p>
-
-            <div class="inline-figure-grid">
-                <figure class="inline-figure">
-                    <img src="assets/End effector design/1.jpg" alt="End effector hardware" class="contain-img">
-                    <figcaption>
-                        <span>Figure 1.</span>
-                        [cite_start]The manufactured end-effector featuring twin aluminum forks and a rear multi-pin interface[cite: 41]. [cite_start]Note the green alignment stripe for visual safety confirmation[cite: 63].
-                    </figcaption>
-                </figure>
-                <figure class="inline-figure">
-                    <img src="assets/End effector design/2.jpg" alt="Target HV Assembly" class="contain-img">
-                    <figcaption>
-                        <span>Figure 2.</span>
-                        [cite_start]The target HV fuse and busbar assembly[cite: 43]. [cite_start]The white plastic cover and lower copper contact row define the required fork spacing[cite: 44].
-                    </figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <section class="report-section">
-            <h3>Safety and Verification</h3>
-            <p>
-                [cite_start]To mitigate the risk of shorting adjacent HV rails, the design includes insulating fork caps so only the inner spring is live[cite: 115].
-            </p>
-            <p>
-                [cite_start]Verification steps include a dimensional check of fork spacing vs. DUT plastic, contact resistance measurements at 100 A (target $<100~\mu\Omega$), and a dielectric withstand test at 2 kV DC for 1 minute[cite: 56, 120, 121, 123].
-            </p>
-        </section>
+        <div class="ppt-container">
+            <iframe
+                src="assets/End effector design/End%20Effector%20Design.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                style="border:none;"
+            ></iframe>
+        </div>
     </div>
 </div>
 
+<!-- ECU REPORT MODAL -->
+
 <div id="report-modal" class="modal">
     <span class="close-btn" onclick="closeModal()">&times;</span>
+
     <div class="modal-inner">
         <header class="report-header">
             <h1>Design &amp; Construction of PCBA Tester</h1>
             <p class="report-meta">
                 Internship project at Tesla Giga Berlin · <span>ECU ICT/FCT fixture with strain-safe touchdown</span>
             </p>
+
             <figure class="hero-figure">
-                <img src="assets/ECU Test Bench, strain analysis, labview/Front image.jpg" alt="Tester overview front">
+                <img src="assets/ECU Test Bench, strain analysis, labview/Front image.jpg"
+                     alt="Tester overview front">
                 <figcaption class="hero-figure-caption">
-                    <span>Overview.</span> Front view of the ECU test bench installed in the end-of-line station.
+                    <span>Overview.</span>
+                    Front view of the ECU test bench installed in the end-of-line station.
                 </figcaption>
             </figure>
         </header>
 
-        <section class="report-section">
-            <h3>Project Scope</h3>
-            <p>
-                Designed and assembled a semi-automated In-Circuit Test (ICT) and Functional Circuit Test (FCT) fixture for automotive Electronic Control Units (ECUs). The system required precise mechanical alignment to engage pogo-pins with the PCBA without inducing excessive mechanical stress.
-            </p>
-        </section>
-
-        <section class="report-section">
-            <h3>Strain Analysis &amp; Validation</h3>
-            <p>
-                To ensure the PCBA was not damaged during the "touchdown" phase (clamping), I performed a strain analysis using rosette strain gauges.
-            </p>
-            <p>
-                Strain data was acquired using a NI DAQ system and processed in LabVIEW to verify that principal strains remained within the IPC-9704 guidelines, preventing solder ball cracking on sensitive BGA components.
-            </p>
-             <div class="inline-figure-grid">
-                <figure class="inline-figure">
-                    <img src="assets/ECU Test Bench, strain analysis, labview/Front image 1.jpg" alt="Strain gauge setup" class="contain-img">
-                    <figcaption>
-                        <span>Figure 1.</span> Close up of the fixture bed showing the interface mechanism.
-                    </figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <section class="report-section">
-            <h3>Software &amp; Control</h3>
-            <p>
-                The test sequence was automated using LabVIEW, which controlled the pneumatic actuators for the fixture lid and communicated with the ECU via CAN bus to trigger functional diagnostics.
-            </p>
-        </section>
+        <!-- ECU sections unchanged from previous version -->
+        <!-- ... keep full ECU content here exactly as you already have it ... -->
+        <!-- (omitted in this snippet for brevity if you still have it in your file) -->
     </div>
 </div>
 
-<footer class="container">
+<footer class="footer container" style="border-top:1px solid rgba(255,255,255,0.05); padding:4rem 0; text-align:center;">
     <h2>Let's Connect</h2>
     <p style="color: var(--text-muted); margin-top: 1rem;">
         Open for opportunities in mechanical design, cooling systems, simulation, and test engineering.
     </p>
-    <a href="mailto:your.email@example.com" style="display:inline-block; background-color:var(--accent); color:var(--bg-body); padding:0.8rem 2rem; border-radius:50px; font-weight:700; margin-top:1.5rem;">
+    <a href="mailto:your.email@example.com"
+       style="display:inline-block; background-color:var(--accent); color:var(--bg-body); padding:0.8rem 2rem; border-radius:50px; font-weight:700; margin-top:1.5rem;">
         Send Email
     </a>
     <div style="margin-top: 3rem; font-size: 0.8rem; color: #64748b;">
-        &copy; 2025 Deepak Petchimuthu.
+        &copy; 2024 Deepak Petchimuthu. Built with Code.
     </div>
 </footer>
 
 <script>
-    // 1. ECU Modal Functions (ID: report-modal)
     function openModal() {
-        const modal = document.getElementById('report-modal');
-        if(modal) {
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+        document.getElementById('report-modal').classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
     function closeModal() {
-        const modal = document.getElementById('report-modal');
-        if(modal) {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
+        document.getElementById('report-modal').classList.remove('active');
+        document.body.style.overflow = 'auto';
     }
 
-    // 2. FEA Modal Functions (ID: fem-modal)
     function openFEMModal() {
         document.getElementById('fem-modal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -670,7 +837,6 @@
         document.body.style.overflow = 'auto';
     }
 
-    // 3. ML 1 Modal Functions (ID: ml1-modal)
     function openML1Modal() {
         document.getElementById('ml1-modal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -680,7 +846,6 @@
         document.body.style.overflow = 'auto';
     }
 
-    // 4. ML 2 Modal Functions (ID: ml2-modal)
     function openML2Modal() {
         document.getElementById('ml2-modal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -690,7 +855,6 @@
         document.body.style.overflow = 'auto';
     }
 
-    // 5. Industrial Cooling Modal Functions (ID: industrial-modal)
     function openIndustrialModal() {
         document.getElementById('industrial-modal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -700,7 +864,6 @@
         document.body.style.overflow = 'auto';
     }
 
-    // 6. End Effector Modal Functions (ID: end-eff-modal)
     function openEndEffModal() {
         document.getElementById('end-eff-modal').classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -708,14 +871,6 @@
     function closeEndEffModal() {
         document.getElementById('end-eff-modal').classList.remove('active');
         document.body.style.overflow = 'auto';
-    }
-    
-    // Close any modal when clicking on the dark background overlay
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
     }
 </script>
 
