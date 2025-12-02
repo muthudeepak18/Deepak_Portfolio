@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deepak | Engineering Portfolio</title>
+    <title>Deepak Petchimuthu | Engineering Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -27,11 +27,52 @@
             line-height: 1.6;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+        a:hover { color: var(--accent); }
         ul { list-style: none; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+
+        /* Top contact bar */
+
+        .topbar {
+            background: #020617;
+            border-bottom: 1px solid rgba(148,163,184,0.35);
+            font-size: 0.78rem;
+        }
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.45rem 0;
+            color: var(--text-muted);
+        }
+        .lang-switch span {
+            margin-right: 0.5rem;
+            cursor: pointer;
+            user-select: none;
+        }
+        .lang-switch .active {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .contact-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+        .contact-item i {
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
 
         nav {
             display: flex;
@@ -47,7 +88,7 @@
         .nav-links a { color: var(--text-muted); font-size: 0.9rem; }
 
         .hero {
-            padding: 4rem 0 4rem 0;
+            padding: 3.5rem 0 4rem 0;
             max-width: 800px;
         }
 
@@ -61,17 +102,57 @@
         .hero span { color: var(--accent); }
         .hero p { color: var(--text-muted); font-size: 1.1rem; }
 
-        .folder-structure {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            margin-bottom: 4rem;
+        /* NEW: skills block under hero */
+
+        .hero-meta {
+            margin-top: 2.2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
         }
 
-        .folder-structure img { max-width: 100%; border-radius: 6px; }
-        .caption { margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem; font-family: monospace; }
+        .hero-meta-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(148,163,184,0.35);
+            padding: 1.25rem 1.4rem;
+        }
+
+        .hero-meta-card h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .hero-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .hero-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: var(--accent);
+            margin-top: 0.45rem;
+            flex-shrink: 0;
+        }
 
         .section-header {
             margin: 3rem 0 1.75rem 0;
@@ -128,6 +209,17 @@
             max-height: 180px;
             padding: 0.75rem 0.5rem;
             background: radial-gradient(circle at top, #38bdf8 0, #020617 55%, #020617 100%);
+        }
+
+        /* NEW: Style for cards without images (using Icons instead) */
+        .card-thumb.icon-thumb {
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+            color: var(--accent);
+            font-size: 3.5rem;
         }
 
         .card h3 { margin: 0.4rem 0 0.5rem 0; font-size: 1.15rem; }
@@ -312,6 +404,11 @@
 
         footer { margin-top: 2rem; }
 
+        @media (max-width: 900px) {
+            .topbar-inner { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+            .contact-line { row-gap: 0.5rem; align-items: flex-start; }
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5rem; }
             .modal-inner { padding: 2.25rem 1.6rem 2.8rem 1.6rem; margin-top: 4vh; }
@@ -322,36 +419,74 @@
 </head>
 <body>
 
+<div class="topbar">
+    <div class="container topbar-inner">
+        <div class="lang-switch">
+            <span id="lang-en" class="active">EN</span>|
+            <span id="lang-de">DE</span>
+        </div>
+        <div class="contact-line">
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+4917660413459">+49 176 60413459</a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:muthudeepak18@gmail.com">muthudeepak18@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <a href="mailto:Deepak.Petchimuthu@stud.eah-jena.de">Deepak.Petchimuthu@stud.eah-jena.de</a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                <a href="https://www.linkedin.com/in/dp18/" target="_blank" rel="noopener noreferrer">
+                    linkedin.com/in/dp18
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <header class="container">
     <nav>
         <div class="logo">Deepak<span>.</span></div>
         <div class="nav-links">
-            <a href="#fea">FEA</a>
-            <a href="#mechanical">Mechanical</a>
-            <a href="#cooling">Cooling</a>
-            <a href="#software">Software / ML</a>
+            <a href="#fea" id="nav-fea" data-en="FEA" data-de="FEM">FEA</a>
+            <a href="#mechanical" id="nav-mech" data-en="Mechanical" data-de="Mechanik">Mechanical</a>
+            <a href="#cooling" id="nav-cooling" data-en="Matlab + Simulink" data-de="Matlab + Simulink">Matlab + Simulink</a>
+            <a href="#optics" id="nav-optics" data-en="Optics" data-de="Optik">Optics</a>
+            <a href="#software" id="nav-soft" data-en="Software / ML" data-de="Software / ML">Software / ML</a>
         </div>
     </nav>
 </header>
 
 <section class="container hero">
-    <h1>Engineering Portfolio.<br><span>Mechanical Design &amp; Simulation.</span></h1>
-    <p>Work across test fixtures, cooling systems, structural simulation, and machine learning for engineering applications.</p>
-</section>
+    <h1>
+        <span id="hero-title-1"
+              data-en="Engineering Portfolio."
+              data-de="Ingenieurportfolio.">Engineering Portfolio.</span><br>
+        <span id="hero-title-2"
+              data-en="Mechanical Design &amp; Simulation."
+              data-de="Konstruktion und Simulation im Maschinenbau.">Mechanical Design &amp; Simulation.</span>
+    </h1>
+    <p id="hero-text"
+       data-en="Mechanical engineer working across fixtures, cooling systems, structural simulation, and data-driven test engineering."
+       data-de="Maschinenbauingenieur mit Erfahrung in Spannvorrichtungen, Kühlsystemen, Struktursimulation und datengetriebener Prüftechnik.">
+        Mechanical engineer working across fixtures, cooling systems, structural simulation, and data-driven test engineering.
+    </p>
 
-<section class="container">
-    <div class="folder-structure">
-        <img src="assets/folder-structure.png" alt="Project Directory">
-        <p class="caption">Folder structure of this portfolio repository.</p>
-    </div>
-</section>
 
-<!-- FEA -->
+</section>
 
 <section id="fea" class="container">
     <div class="section-header">
-        <p>Finite Element Analysis</p>
-        <h2>Structural Behaviour in Wind-Turbine Components</h2>
+        <p id="fea-sub" data-en="Finite Element Analysis" data-de="Finite-Elemente-Analyse">Finite Element Analysis</p>
+        <h2 id="fea-title"
+            data-en="Structural Behaviour in Wind-Turbine Components"
+            data-de="Strukturverhalten von Windturbinen-Komponenten">
+            Structural Behaviour in Wind-Turbine Components
+        </h2>
     </div>
 
     <div class="grid">
@@ -372,12 +507,16 @@
     </div>
 </section>
 
-<!-- MECHANICAL -->
-
 <section id="mechanical" class="container">
     <div class="section-header">
-        <p>Mechanical Development &amp; Test</p>
-        <h2>Fixtures, End Effectors, and ECU Test Benches</h2>
+        <p id="mech-sub" data-en="Mechanical Development &amp; Test" data-de="Mechanische Entwicklung &amp; Test">
+            Mechanical Development &amp; Test
+        </p>
+        <h2 id="mech-title"
+            data-en="Fixtures, End Effectors, and ECU Test Benches"
+            data-de="Spannvorrichtungen, Endeffektoren und ECU-Teststände">
+            Fixtures, End Effectors, and ECU Test Benches
+        </h2>
     </div>
 
     <div class="grid">
@@ -387,9 +526,9 @@
                 <img src="assets/ECU Test Bench, strain analysis, labview/Front image 1.jpg"
                      alt="ECU Test Bench overview">
             </div>
-            <h3>ECU Test Bench &amp; Strain Analysis</h3>
+            <h3>ECU Test Bench &amp; Strain Gauge Validation</h3>
             <div class="card-desc">
-                Production ICT/FCT bed-of-nails fixture for an automotive ECU, validated using rosette strain gauges and LabVIEW.
+                Production ICT/FCT bed-of-nails fixture for an automotive ECU, verified with rosette strain gauges and a LabVIEW-based data-acquisition workflow.
             </div>
             <div class="tags">
                 <span class="tag">SolidWorks</span>
@@ -398,16 +537,14 @@
             </div>
         </article>
 
-        <!-- End effector card with image and PDF modal -->
-        <article class="card" onclick="openEndEffModal()">
+        <article class="card" onclick="openEndEffectorModal()">
             <div class="card-thumb">
-                <img src="assets/End effector design/1.jpg"
-                     alt="End effector gripping high-voltage connector"
-                     class="contain-img">
+                <img src="assets/End%20effector%20design/1.jpg"
+                     alt="Handheld end-effector for high-voltage modules">
             </div>
             <h3>End Effector Design</h3>
             <div class="card-desc">
-                Gripper and support tooling for safe handling of high-voltage power modules, with creepage and clearance constraints built into the geometry.
+                Handheld / robotic end-effector for safe contacting of high-voltage power modules, with creepage and clearance constraints embedded in the geometry.
             </div>
             <div class="tags">
                 <span class="tag">High Voltage</span>
@@ -416,7 +553,8 @@
             </div>
         </article>
 
-        <article class="card">
+        <!-- NOW CLICKABLE: opens fixtures modal -->
+        <article class="card" onclick="openFixturesModal()">
             <h3>Fixtures and Gauges</h3>
             <div class="card-desc">
                 Assembly fixtures and go/no-go gauges that reduce operator variability and ensure dimensional conformity in production steps.
@@ -431,12 +569,16 @@
     </div>
 </section>
 
-<!-- COOLING -->
-
 <section id="cooling" class="container">
     <div class="section-header">
-        <p>Cooling Systems &amp; Hydraulics</p>
-        <h2>Industrial Loops, Turbine Cooling, and Pressure Tools</h2>
+        <p id="cool-sub" data-en="Cooling Systems &amp; Hydraulics" data-de="Kühlsysteme &amp; Hydraulik">
+            Cooling Systems &amp; Hydraulics
+        </p>
+        <h2 id="cool-title"
+            data-en="Industrial Loops, Turbine Cooling, and Pressure Tools"
+            data-de="Industrielle Kühlkreise, Turbinenkühlung und Druckwerkzeuge">
+            Industrial Loops, Turbine Cooling, and Pressure Tools
+        </h2>
     </div>
 
     <div class="grid">
@@ -458,10 +600,15 @@
             </div>
         </article>
 
-        <article class="card">
+        <article class="card" onclick="openTurbineModal()">
+            <div class="card-thumb">
+                <img src="assets/Matlab%20+%20Simulink%20turbine/Cover%20image.jpg"
+                     alt="Wind turbine cooling Simulink cover"
+                     class="contain-img">
+            </div>
             <h3>Matlab + Simulink Turbine Cooling</h3>
             <div class="card-desc">
-                Thermal–hydraulic model of a wind-turbine cooling circuit for converters and transformers, with pressure-drop evaluation and flow balancing.
+                Thermal–hydraulic model of a wind-turbine cooling circuit for converters and transformer, with wind-speed-dependent loads and cooler sizing.
             </div>
             <div class="tags">
                 <span class="tag">Energy Systems</span>
@@ -470,10 +617,15 @@
             </div>
         </article>
 
-        <article class="card">
+        <article class="card" onclick="openPressureModal()">
+            <div class="card-thumb">
+                <img src="assets/Python%20Script%20-%20Pressure%20Calculation/1.jpg"
+                     alt="Pressure drop calculator dashboard"
+                     class="contain-img">
+            </div>
             <h3>Python Script – Pressure Calculation</h3>
             <div class="card-desc">
-                Jupyter-based pressure-drop calculator that applies Darcy–Weisbach, friction-factor correlations, and component K-values for pipe-network sizing.
+                Jupyter-based pressure-drop calculator that applies Darcy–Weisbach, friction-factor correlations and component K-values for pipe-network sizing.
             </div>
             <div class="tags">
                 <span class="tag">Python</span>
@@ -485,12 +637,92 @@
     </div>
 </section>
 
-<!-- SOFTWARE / ML -->
+<section id="optics" class="container">
+    <div class="section-header">
+        <p id="optics-sub" data-en="Optics &amp; Photonics"
+           data-de="Optik &amp; Photonik">
+            Optics &amp; Photonics
+        </p>
+        <h2 id="optics-title"
+            data-en="Laboratory Experiments and Simulation"
+            data-de="Laborexperimente und Simulation">
+            Laboratory Experiments and Simulation
+        </h2>
+    </div>
+
+    <div class="grid">
+
+        <article class="card" onclick="openOptics1Modal()">
+            <div class="card-thumb icon-thumb">
+                <i class="fa-solid fa-microscope"></i>
+            </div>
+            <h3>
+                <span data-en="Abbe Refractometer" data-de="Abbe-Refraktometer">Abbe Refractometer</span>
+            </h3>
+            <div class="card-desc"
+                 data-en="Determination of refractive indices of liquid and solid substances using the Abbe refractometer and analysis of dispersion."
+                 data-de="Bestimmung von Brechungsindizes flüssiger und fester Stoffe unter Verwendung des Abbe-Refraktometers und Analyse der Dispersion.">
+                Determination of refractive indices of liquid and solid substances using the Abbe refractometer and analysis of dispersion.
+            </div>
+            <div class="tags">
+                <span class="tag">Optics</span>
+                <span class="tag">Lab</span>
+                <span class="tag">Refraction</span>
+            </div>
+        </article>
+
+        <article class="card" onclick="openOptics2Modal()">
+            <div class="card-thumb icon-thumb">
+                <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+            <h3>
+                <span data-en="Surveying Instruments" data-de="Vermessungsinstrumente">Surveying Instruments</span>
+            </h3>
+            <div class="card-desc"
+                 data-en="Principles of Theodolites and Tachymeters, distance measurement using EDM, and floor area calculation."
+                 data-de="Prinzipien von Theodoliten und Tachymetern, Entfernungsmessung mittels EDM und Flächenberechnung.">
+                Principles of Theodolites and Tachymeters, distance measurement using EDM, and floor area calculation.
+            </div>
+            <div class="tags">
+                <span class="tag">Theodolite</span>
+                <span class="tag">Tachymeter</span>
+                <span class="tag">Measurement</span>
+            </div>
+        </article>
+
+        <article class="card" onclick="openOptics3Modal()">
+            <div class="card-thumb icon-thumb">
+                <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h3>
+                <span data-en="TracePro Simulation" data-de="TracePro Simulation">TracePro Simulation</span>
+            </h3>
+            <div class="card-desc"
+                 data-en="Raytracing simulation to analyze light scattering, reflection, and transmission in complex optical assemblies."
+                 data-de="Raytracing-Simulation zur Analyse von Lichtstreuung, Reflexion und Transmission in komplexen optischen Baugruppen.">
+                Raytracing simulation to analyze light scattering, reflection, and transmission in complex optical assemblies.
+            </div>
+            <div class="tags">
+                <span class="tag">TracePro</span>
+                <span class="tag">Simulation</span>
+                <span class="tag">Raytracing</span>
+            </div>
+        </article>
+
+    </div>
+</section>
 
 <section id="software" class="container">
     <div class="section-header">
-        <p>Software, Machine Learning &amp; Data</p>
-        <h2>Signal Processing and Physics-Informed Models</h2>
+        <p id="soft-sub" data-en="Software, Machine Learning &amp; Data"
+           data-de="Software, Machine Learning &amp; Daten">
+            Software, Machine Learning &amp; Data
+        </p>
+        <h2 id="soft-title"
+            data-en="Signal Processing and Physics-Informed Models"
+            data-de="Signalverarbeitung und physikbasierte Modelle">
+            Signal Processing and Physics-Informed Models
+        </h2>
     </div>
 
     <div class="grid">
@@ -511,26 +743,8 @@
             </div>
         </article>
 
-        <article class="card" onclick="openML2Modal()">
-            <div class="card-thumb">
-                <img src="assets/Machine%20Learning/Intelligent%20Monitoring%20of%20Engineering%20Systems.jpg"
-                     alt="Intelligent monitoring project thumbnail">
-            </div>
-            <h3>Intelligent Monitoring of Engineering Systems</h3>
-            <div class="card-desc">
-                Condition monitoring and anomaly detection workflow for engineering assets using feature engineering and classification models.
-            </div>
-            <div class="tags">
-                <span class="tag">Time Series</span>
-                <span class="tag">Classification</span>
-                <span class="tag">Diagnostics</span>
-            </div>
-        </article>
-
     </div>
 </section>
-
-<!-- FEA PPT MODAL -->
 
 <div id="fem-modal" class="modal">
     <span class="close-btn" onclick="closeFEMModal()">&times;</span>
@@ -552,7 +766,110 @@
     </div>
 </div>
 
-<!-- ML PPT MODALS -->
+<div id="optics1-modal" class="modal">
+    <span class="close-btn" onclick="closeOptics1Modal()">&times;</span>
+    <div class="modal-inner">
+        <header class="report-header">
+            <h1 data-en="Abbe Refractometer" data-de="Abbe-Refraktometer">Abbe Refractometer</h1>
+            <p class="report-meta" data-en="Principle and Application of the Pulfrich-Refractometer" data-de="Prinzip und Anwendung des Pulfrich-Refraktometers">
+                Principle and Application of the Pulfrich-Refractometer
+            </p>
+        </header>
+
+        <section class="report-section">
+            <h3 data-en="Principles of Refraction" data-de="Grundlagen der Brechung">Principles of Refraction</h3>
+            <p data-en="Refraction is the bending of light during transmission from one transparent substance into another, caused by different speeds of light propagation. The incident ray is refracted at a certain angle. When the angle of incidence exceeds the critical angle, the ray is reflected back into the medium; this is known as Total Internal Reflection."
+               data-de="Brechung ist die Biegung von Licht beim Übergang von einer transparenten Substanz in eine andere, verursacht durch unterschiedliche Ausbreitungsgeschwindigkeiten. Wenn der Einfallswinkel den kritischen Winkel überschreitet, wird der Strahl in das Medium zurückreflektiert; dies wird als Totalreflexion bezeichnet.">
+                Refraction is the bending of light during transmission from one transparent substance into another, caused by different speeds of light propagation. The incident ray is refracted at a certain angle. When the angle of incidence exceeds the critical angle, the ray is reflected back into the medium; this is known as Total Internal Reflection.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3 data-en="Abbe vs. Pulfrich" data-de="Abbe vs. Pulfrich">Abbe vs. Pulfrich</h3>
+            <p data-en="The Abbe Refractometer uses the principle of the critical angle and total reflection to determine the refractive index. A shadow boundary is created between a measurement and illumination prism. The Pulfrich Refractometer uses a V-prism where light enters horizontally at a grazing angle, and the deflection angle is measured rather than the critical angle."
+               data-de="Das Abbe-Refraktometer nutzt das Prinzip des kritischen Winkels und der Totalreflexion zur Bestimmung des Brechungsindex. Das Pulfrich-Refraktometer verwendet ein V-Prisma, bei dem das Licht horizontal in einem streifenden Winkel einfällt, und es wird der Ablenkwinkel anstelle des kritischen Winkels gemessen.">
+                The Abbe Refractometer uses the principle of the critical angle and total reflection to determine the refractive index. A shadow boundary is created between a measurement and illumination prism. The Pulfrich Refractometer uses a V-prism where light enters horizontally at a grazing angle, and the deflection angle is measured rather than the critical angle.
+            </p>
+        </section>
+
+        <div class="ppt-container">
+            <iframe
+                src="assets/Optics/Abbe%20Refractometer%20Preparatory%20Report.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                style="border:none;"
+            ></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="optics2-modal" class="modal">
+    <span class="close-btn" onclick="closeOptics2Modal()">&times;</span>
+    <div class="modal-inner">
+        <header class="report-header">
+            <h1 data-en="Surveying Instruments" data-de="Vermessungsinstrumente">Surveying Instruments</h1>
+            <p class="report-meta" data-en="Principle and Application of Surveying Instruments" data-de="Prinzip und Anwendung von Vermessungsinstrumenten">
+                Principle and Application of Surveying Instruments
+            </p>
+        </header>
+
+        <section class="report-section">
+            <h3 data-en="Theodolite and Tachymeter" data-de="Theodolit und Tachymeter">Theodolite and Tachymeter</h3>
+            <p data-en="A Theodolite is an instrument used to measure horizontal and vertical angles using graduated circles and a telescope. A Tachymeter is essentially a theodolite with an integrated distance measurement system, allowing for the determination of direction, distance, and height in one step."
+               data-de="Ein Theodolit ist ein Instrument zur Messung von Horizontal- und Vertikalwinkeln unter Verwendung von Teilkreisen und einem Fernrohr. Ein Tachymeter ist im Wesentlichen ein Theodolit mit integriertem Entfernungsmesssystem, das die Bestimmung von Richtung, Entfernung und Höhe in einem Schritt ermöglicht.">
+                A Theodolite is an instrument used to measure horizontal and vertical angles using graduated circles and a telescope. A Tachymeter is essentially a theodolite with an integrated distance measurement system, allowing for the determination of direction, distance, and height in one step.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3 data-en="Floor Area Calculation" data-de="Berechnung der Bodenfläche">Floor Area Calculation</h3>
+            <p data-en="To calculate the area of a room, the space was partitioned into 5 sections. Using a Total Station, distances and angles were measured from specific set points. The area was calculated by summing these partitioned sections, resulting in a total floor area of 79.7135 m²."
+               data-de="Zur Berechnung der Raumfläche wurde der Raum in 5 Abschnitte unterteilt. Mit einer Totalstation wurden Entfernungen und Winkel von bestimmten Standpunkten aus gemessen. Die Fläche wurde durch Summierung dieser Teilabschnitte berechnet, was eine Gesamtbodenfläche von 79,7135 m² ergab.">
+                To calculate the area of a room, the space was partitioned into 5 sections. Using a Total Station, distances and angles were measured from specific set points. The area was calculated by summing these partitioned sections, resulting in a total floor area of 79.7135 m².
+            </p>
+        </section>
+
+        <div class="ppt-container">
+            <iframe
+                src="assets/Optics/Optics%20lab%20report_Principle%20and%20application%20on%20Surveying%20Instruments.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                style="border:none;"
+            ></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="optics3-modal" class="modal">
+    <span class="close-btn" onclick="closeOptics3Modal()">&times;</span>
+    <div class="modal-inner">
+        <header class="report-header">
+            <h1 data-en="TracePro Simulation" data-de="TracePro Simulation">TracePro Simulation</h1>
+            <p class="report-meta" data-en="Ray tracing for optical analysis of solid models" data-de="Raytracing zur optischen Analyse von Festkörpermodellen">
+                Ray tracing for optical analysis of solid models
+            </p>
+        </header>
+
+        <section class="report-section">
+            <h3 data-en="Generalized Ray Tracing" data-de="Verallgemeinertes Raytracing">Generalized Ray Tracing</h3>
+            <p data-en="TracePro uses 'generalized ray tracing' to launch rays into a solid model without assuming the order of surface intersections. It utilizes the Monte Carlo method to simulate light propagation, treating scattering and diffraction as random processes to calculate flux distribution."
+               data-de="TracePro verwendet 'verallgemeinertes Raytracing', um Strahlen in ein Festkörpermodell zu senden, ohne die Reihenfolge der Oberflächenschnittpunkte anzunehmen. Es nutzt die Monte-Carlo-Methode zur Simulation der Lichtausbreitung, wobei Streuung und Beugung als zufällige Prozesse behandelt werden, um die Flussverteilung zu berechnen.">
+                TracePro uses 'generalized ray tracing' to launch rays into a solid model without assuming the order of surface intersections. It utilizes the Monte Carlo method to simulate light propagation, treating scattering and diffraction as random processes to calculate flux distribution.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3 data-en="Simulation Tasks" data-de="Simulationsaufgaben">Simulation Tasks</h3>
+            <p data-en="The report covers building an f/4 lens with a 100mm focal length to analyze intensity distribution, creating a light-pipe with cladding to observe total internal reflection efficiency, and analyzing polarization on a Titanium sample."
+               data-de="Der Bericht behandelt den Bau einer f/4-Linse mit 100 mm Brennweite zur Analyse der Intensitätsverteilung, die Erstellung eines Lichtleiters mit Mantel zur Beobachtung der Totalreflexionseffizienz und die Analyse der Polarisation an einer Titanprobe.">
+                The report covers building an f/4 lens with a 100mm focal length to analyze intensity distribution, creating a light-pipe with cladding to observe total internal reflection efficiency, and analyzing polarization on a Titanium sample.
+            </p>
+        </section>
+
+        <div class="ppt-container">
+            <iframe
+                src="assets/Optics/Tracepro%20report.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                style="border:none;"
+            ></iframe>
+        </div>
+    </div>
+</div>
 
 <div id="ml1-modal" class="modal">
     <span class="close-btn" onclick="closeML1Modal()">&times;</span>
@@ -574,27 +891,132 @@
     </div>
 </div>
 
-<div id="ml2-modal" class="modal">
-    <span class="close-btn" onclick="closeML2Modal()">&times;</span>
+<!-- NEW: Fixtures and Gauges modal showing CAD files -->
+<div id="fixtures-modal" class="modal">
+    <span class="close-btn" onclick="closeFixturesModal()">&times;</span>
 
     <div class="modal-inner">
         <header class="report-header">
-            <h1>Intelligent Monitoring of Engineering Systems</h1>
+            <h1>Fixtures and Gauges – CAD Files</h1>
             <p class="report-meta">
-                Slides for the intelligent monitoring project
+                Downloadable <span>IGES</span> and <span>SolidWorks</span> models used for assembly
+                fixtures, jigs, and go/no-go gauges.
             </p>
         </header>
 
-        <div class="ppt-container">
-            <iframe
-                src="assets/Machine%20Learning/Intelligent%20Monitoring%20of%20Engineering%20Systems.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                style="border:none;"
-            ></iframe>
-        </div>
+        <section class="report-section">
+            <h3>File List (assets/Fixtures and Gauges)</h3>
+            <p>
+                These links point to the CAD models in your
+                <code>assets/Fixtures and Gauges</code> folder. Make sure the filenames match the
+                files on disk.
+            </p>
+
+            <div class="inline-figure">
+                <div style="padding:0.9rem;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                        <thead>
+                        <tr style="border-bottom:1px solid rgba(148,163,184,0.6);">
+                            <th style="text-align:left;padding:0.4rem 0.3rem;">File</th>
+                            <th style="text-align:left;padding:0.4rem 0.3rem;">Type</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/21k7120689_nv3_asm.igs" download>
+                                    21k7120689_nv3_asm.igs
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">IGES assembly</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/71227-vt010_asm.igs" download>
+                                    71227-vt010_asm.igs
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">IGES assembly</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/ather_solder_asm.igs" download>
+                                    ather_solder_asm.igs
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">IGES assembly</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/brust_testing_fixture_asm.igs" download>
+                                    brust_testing_fixture_asm.igs
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">IGES assembly</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/con130_asm.igs" download>
+                                    con130_asm.igs
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">IGES assembly</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/jig1_asm.igs" download>
+                                    jig1_asm.igs
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">IGES assembly</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/jig2.sldprt" download>
+                                    jig2.sldprt
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">SolidWorks part</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/k6150059_10_asm.igs" download>
+                                    k6150059_10_asm.igs
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">IGES assembly</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/Part1.sldprt" download>
+                                    Part1.sldprt
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">SolidWorks part</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/Part2.sldprt" download>
+                                    Part2.sldprt
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">SolidWorks part</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:0.35rem 0.3rem;">
+                                <a href="assets/Fixtures%20and%20Gauges/Part3.sldprt" download>
+                                    Part3.sldprt
+                                </a>
+                            </td>
+                            <td style="padding:0.35rem 0.3rem;color:#94a3b8;">SolidWorks part</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
-
-<!-- INDUSTRIAL COOLING REPORT MODAL -->
 
 <div id="industrial-modal" class="modal">
     <span class="close-btn" onclick="closeIndustrialModal()">&times;</span>
@@ -754,29 +1176,524 @@
     </div>
 </div>
 
-<!-- END EFFECTOR PDF MODAL -->
-
-<div id="end-eff-modal" class="modal">
-    <span class="close-btn" onclick="closeEndEffModal()">&times;</span>
+<div id="turbine-modal" class="modal">
+    <span class="close-btn" onclick="closeTurbineModal()">&times;</span>
 
     <div class="modal-inner">
         <header class="report-header">
-            <h1>End Effector for High-Voltage Power Modules</h1>
+            <h1>Thermal Hydraulic Modeling and Control of a Wind-Turbine Cooling Circuit</h1>
             <p class="report-meta">
-                Design report for the mechanical gripper used to handle insulated busbars and high-voltage modules
+                Detailed <span>Simulink/Simscape implementation</span> of a water–glycol cooling loop for
+                turbine converters and transformer, with wind and power functions.
             </p>
         </header>
 
-        <div class="ppt-container">
-            <iframe
-                src="assets/End effector design/End%20Effector%20Design.pdf#toolbar=0&navpanes=0&scrollbar=0"
-                style="border:none;"
-            ></iframe>
-        </div>
+        <section class="report-section">
+            <h3>Project Context and Objectives</h3>
+            <p>
+                Utility-scale wind turbines use liquid-cooled converters and transformers in the nacelle or
+                tower. The cooling circuit must keep component temperatures within limits under changing
+                wind speed, ambient conditions and electrical loading, while respecting pump-head and
+                pressure-drop constraints.
+            </p>
+            <p>
+                This model represents a complete water–glycol loop, coupled to MATLAB functions for
+                wind-speed scheduling and turbine power. Objectives:
+            </p>
+            <p>
+                • size plate coolers, pump and valves<br>
+                • predict converter and transformer inlet temperatures<br>
+                • evaluate pressure drops and flow balancing<br>
+                • validate governing equations against Simscape results.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>System Architecture</h3>
+            <p>
+                The top-level model contains subsystems for the pumping unit, converters, transformer,
+                plate coolers and an air/utility block for power and air properties. Liquid-side pressure
+                losses and cooler bypass paths are explicit.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/1.jpg"
+                         alt="Top-level turbine cooling Simulink model"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 1.</span>
+                        Top-level Simulink architecture of the water–glycol cooling circuit with
+                        converters, transformer, plate coolers, pumping unit, and power/air utility.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="inline-kpi">
+                <div class="kpi-chip"><strong>2</strong> main heat sources (converters + transformer)</div>
+                <div class="kpi-chip"><strong>2</strong> plate coolers in parallel</div>
+                <div class="kpi-chip"><strong>18</strong> operating scenarios swept</div>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Cooler Subsystems</h3>
+            <p>
+                The cooler group contains two plate coolers in parallel with separate pressure-loss
+                elements. Sensors provide inlet and outlet temperatures and pressures for both branches.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/2.jpg"
+                         alt="Cooler subsystem overview"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 2.</span>
+                        Coolers subsystem with twin plate coolers, pressure-loss elements and air-side
+                        interfaces.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/3.jpg"
+                         alt="Internal plate cooler model"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 3.</span>
+                        Inside one plate-cooler unit: liquid-side pressure losses and two identical
+                        plate cores implemented using an NTU-based heat-exchanger model.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Transformer and Converter Branches</h3>
+            <p>
+                Heat sources—two power converters and a transformer—are modelled as distributed loss blocks
+                with branch-specific pressure losses. Loss inputs are computed from turbine electrical
+                power and efficiency and injected into the coolant via thermal ports.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/4.jpg"
+                         alt="Transformer branch"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 4.</span>
+                        Transformer branch with regulated valve, pressure sensors and thermal loss block
+                        representing copper and core losses.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/5.jpg"
+                         alt="Converter branches"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 5.</span>
+                        Two converter branches in parallel, including loss sources and pressure-drop
+                        elements; outlet temperatures are monitored for each converter.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Pumping Unit and Pressure Relief</h3>
+            <p>
+                The pumping unit is a variable-speed centrifugal pump controlled on discharge pressure.
+                A pressure-relief valve returns liquid to the suction side when pressure exceeds a safe
+                limit, protecting the circuit during start-up or valve misconfiguration.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/6.jpg"
+                         alt="Pumping unit with centrifugal pump and PRV"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 6.</span>
+                        Pumping unit: centrifugal pump, pump heat-dissipation block and pressure-relief
+                        valve in the discharge line, with pressure and temperature instrumentation.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Wind Environment and Power Model</h3>
+            <p>
+                Cooling demand and available convective capacity depend on wind conditions. Two MATLAB
+                functions drive the simulation:
+            </p>
+            <p>
+                • <code>wind_steps(t,...)</code> – a time-dependent wind-speed schedule.<br>
+                • <code>wind_turbine_power(V)</code> – a piecewise power curve mapping wind speed to
+                  electrical power.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/7.jpg"
+                         alt="Wind and power model block"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 7.</span>
+                        Supervisory block: wind speed and ambient temperature feed the air properties;
+                        turbine power and efficiencies generate converter and transformer losses.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <p>
+                The report documents governing equations for mass and momentum conservation, energy
+                balance, heat-exchanger NTU relations and valve characteristics, then shows how they are
+                implemented in MATLAB and Simscape.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Simulation Campaign and Results</h3>
+            <p>
+                The model is run for 18 operating scenarios combining wind-speed profiles, ambient
+                temperatures and valve settings. For each scenario the script logs converter inlet
+                temperatures, cooler heat duty and pump operating points.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/8.jpg"
+                         alt="Converters inlet temperatures, simulations 1–18"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 8.</span>
+                        Converters inlet temperature traces for simulations 1–18. The envelope remains
+                        between roughly 34&nbsp;°C and 45&nbsp;°C for the chosen component sizes and
+                        control strategy.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/9.jpg"
+                         alt="Cooler heat exchange, simulations 1–18"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 9.</span>
+                        Heat exchanged in the coolers across the same simulations, peaking around
+                        220–230&nbsp;kW at high wind speeds.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="inline-kpi">
+                <div class="kpi-chip"><strong>&gt; 5&nbsp;°C</strong> margin to converter temperature limit</div>
+                <div class="kpi-chip"><strong>~220&nbsp;kW</strong> peak cooler duty at rated power</div>
+                <div class="kpi-chip"><strong>Single pump</strong> covers all cases with PI control</div>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Takeaways</h3>
+            <p>
+                The wind-turbine cooling model links analytical equations, MATLAB functions and Simscape
+                components in one environment. It shows how cooler size, pump selection and valve
+                strategy affect thermal margins and hydraulic performance before hardware is built, and
+                the same framework can be reused for future turbine platforms.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Full Written Report (PDF)</h3>
+            <div class="ppt-container">
+                <iframe
+                    src="assets/Matlab%20+%20Simulink%20turbine/Windturbine%20cooling%20model.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                    style="border:none;"
+                ></iframe>
+            </div>
+        </section>
     </div>
 </div>
 
-<!-- ECU REPORT MODAL -->
+<div id="pressure-modal" class="modal">
+    <span class="close-btn" onclick="closePressureModal()">&times;</span>
+
+    <div class="modal-inner">
+        <header class="report-header">
+            <h1>Python Pressure-Drop Calculator</h1>
+            <p class="report-meta">
+                Interactive <span>Jupyter dashboard</span> for Darcy–Weisbach pressure calculations with
+                editable roughness and K-factors.
+            </p>
+
+            <figure class="hero-figure">
+                <img src="assets/Python%20Script%20-%20Pressure%20Calculation/1.jpg"
+                     alt="Pressure drop calculator dashboard">
+                <figcaption class="hero-figure-caption">
+                    <span>Dashboard view.</span>
+                    Light-themed widget UI showing documentation, pipe selection, constants and K-factor
+                    builder on a single screen.
+                </figcaption>
+            </figure>
+        </header>
+
+        <section class="report-section">
+            <h3>Purpose and Scope</h3>
+            <p>
+                The notebook implements a quick design and comparison tool for single pipe runs. It
+                calculates major, minor, and static pressure losses for one or more candidate pipe sizes,
+                using the Darcy–Weisbach formulation.
+            </p>
+            <p>
+                Typical use cases:
+            </p>
+            <p>
+                • comparing diameter options for a new cooling or process line<br>
+                • checking whether a pump has sufficient head for a given flow and elevation<br>
+                • understanding the effect of fittings and valves via K-factors.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Governing Equations</h3>
+            <p>
+                For each selected pipe, the script applies the standard Darcy–Weisbach formulation.
+                Volumetric flow <code>Q</code> in m³/h is converted to m³/s; the cross-section is
+                <code>A = π·D²/4</code>, and the mean velocity is <code>v = Q/A</code>.
+            </p>
+            <p>
+                Reynolds number is <code>Re = ρ·v·D / μ</code> and the relative roughness is
+                <code>ε/D</code>, where ε is entered in millimetres and converted to metres. The friction
+                factor is:
+            </p>
+            <p>
+                • <strong>Laminar</strong>: <code>f = 64 / Re</code><br>
+                • <strong>Turbulent</strong> (Haaland):<br>
+                <code>f = [ −1.8·log10( (ε/D / 3.7)¹·¹¹ + 6.9/Re ) ]⁻²</code><br>
+                • <strong>Auto</strong>: laminar below Re ≈ 2300, Haaland otherwise.
+            </p>
+            <p>
+                Major loss: <code>ΔP_major = f·(L/D)·(ρ·v²/2)</code><br>
+                Minor loss: <code>ΔP_minor = K_total·(ρ·v²/2)</code><br>
+                Static head: <code>ΔP_static = ρ·g·Δz</code><br>
+                Total: <code>ΔP_total = ΔP_major + ΔP_minor + ΔP_static</code>, reported as
+                <code>ΔP_bar = ΔP_total / 1e5</code> [bar].
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Dashboard Layout and Workflow</h3>
+            <p>
+                The notebook uses <code>ipywidgets</code> to create a light dashboard-style UI:
+            </p>
+            <p>
+                • <strong>Documentation card</strong> summarising all steps and regimes<br>
+                • <strong>Select pipes</strong> – up to three pipes with ID, material and roughness ε (mm)<br>
+                • <strong>Constants</strong> – flow rate, pipe length, elevation, density, viscosity and
+                  friction model<br>
+                • <strong>K-factors</strong> – element library (elbows, valves, tees, etc.) with quantity
+                  and running total K<br>
+                • <strong>Run comparison</strong> – executes the calculation, prints a table and a bar
+                  chart, and exports a CSV file.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Materials, Roughness and K-Factors</h3>
+            <p>
+                A small library maps common pipe materials to typical absolute roughness values in
+                millimetres (PVC/PE, stainless steel, commercial steel, cast iron, concrete, etc.).
+                Selecting <em>Custom (enter ε mm)</em> unlocks the roughness field so datasheet values can
+                be entered directly.
+            </p>
+            <p>
+                Minor losses are accumulated from a list of standard components. For each, the UI allows
+                choosing the element type, editing its K-value if necessary, and defining the quantity in
+                the line. The calculator maintains a table and chip showing the total K used in the
+                Darcy–Weisbach minor-loss term.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Outputs</h3>
+            <p>
+                For each candidate pipe the tool reports:
+            </p>
+            <p>
+                • diameter, velocity and Reynolds number<br>
+                • friction regime and Darcy <code>f</code><br>
+                • major, minor and static pressure losses in bar<br>
+                • total pressure drop in bar.
+            </p>
+            <p>
+                A bar chart compares the total ΔP between selected pipes, and all numeric results are
+                stored to <code>pressure_drop_results.csv</code> for documentation or further analysis.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Python Script (Notebook Cell)</h3>
+            <p>
+                Below is the full Jupyter cell used to build the dashboard and perform the calculations.
+                It combines NumPy, pandas, Matplotlib and <code>ipywidgets</code> on top of standard
+                Darcy–Weisbach relations.
+            </p>
+
+            <textarea readonly
+                      style="width:100%;height:450px;background:#020617;color:#e5e7eb;
+                             font-family:'JetBrains Mono','Fira Code',monospace;
+                             font-size:12px;border-radius:8px;border:1px solid #4b5563;padding:10px;">
+  # -*- coding: utf-8 -*-
+  """Pressure Drop Calculator — with editable ε (mm)"""
+
+  from IPython.display import display, HTML
+  import numpy as np
+  import pandas as pd
+  import matplotlib.pyplot as plt
+  from math import pi
+  import ipywidgets as W
+  from IPython.display import display, clear_output, HTML as IHTML
+
+  # ... (rest of your Python cell unchanged)
+            </textarea>
+        </section>
+    </div>
+</div>
+
+<div id="endeffector-modal" class="modal">
+    <span class="close-btn" onclick="closeEndEffectorModal()">&times;</span>
+
+    <div class="modal-inner">
+        <header class="report-header">
+            <h1>End-Effector for High-Voltage Power Modules</h1>
+            <p class="report-meta">
+                Handheld / robotic contact tool for DC–DC converters and DC fast-charging power stages.
+            </p>
+        </header>
+
+        <section class="report-section">
+            <h3>Project Context and Objectives</h3>
+            <p>
+                High-voltage power-electronic products, such as wall-mounted home-energy converters and
+                DC fast-charging power stages, require a safe and repeatable way to connect test
+                equipment to exposed copper busbars. Manual test leads are slow, operator-dependent and
+                difficult to keep within creepage and clearance limits.
+            </p>
+            <p>
+                This project develops a dedicated end-effector that can be used either by an operator or
+                by a robot. It must guide accurately onto the DUT’s copper terminals, make
+                low-resistance electrical contact, respect all HV distances and survive thousands of
+                docking cycles.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Reference Hardware</h3>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/End%20effector%20design/1.jpg"
+                         alt="Handheld connector / end-effector">
+                    <figcaption>
+                        <span>Figure 1.</span>
+                        Handheld connector / end-effector with twin aluminium forks and rear
+                        multipin connector. The green stripe acts as an alignment mark.
+                    </figcaption>
+                </figure>
+
+                <figure class="inline-figure">
+                    <img src="assets/End%20effector%20design/2.jpg"
+                         alt="HV fuse and busbar assembly">
+                    <figcaption>
+                        <span>Figure 2.</span>
+                        HV fuse and busbar assembly of the DUT. The white plastic cover and the lower
+                        copper contact row define fork spacing and insertion depth.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Design Requirements</h3>
+            <p><strong>Functional</strong></p>
+            <p>
+                • guide onto vertically oriented copper or plated terminals without side loading<br>
+                • provide electrical continuity from DUT terminals to a rear connector<br>
+                • tolerate ≈±0.5&nbsp;mm lateral and ≈±1° angular misalignment<br>
+                • allow one-hand operation or simple robotic motion.
+            </p>
+
+            <p><strong>Electrical / HV</strong></p>
+            <p>
+                • nominal current per pole up to 150&nbsp;A DC (short periods), 100&nbsp;A continuous<br>
+                • DC link voltage up to 1000&nbsp;V<br>
+                • creepage / clearance between HV+ and HV− ≥ 22&nbsp;mm in air<br>
+                • target contact resistance &lt; 100&nbsp;µΩ per pole after endurance cycling.
+            </p>
+
+            <p><strong>Mechanical / Ergonomics</strong></p>
+            <p>
+                • total mass &lt; 600&nbsp;g<br>
+                • no sharp metal edges near live parts or grip surfaces<br>
+                • forks treated as sacrificial parts that can be replaced with standard screws.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Concept and Architecture</h3>
+            <p>
+                The end-effector is divided into front guiding forks, an insulating spacer block, a
+                contact carrier, a rear electrical interface and a strain-relieved cable. The aluminium
+                forks reference the DUT’s plastic guides but do not touch live copper directly. An
+                FR-rated spacer block sets creepage distances and shields the user.
+            </p>
+            <p>
+                Behind the spacer, the contact carrier holds spring contacts and routes them to the rear
+                connector. A cable gland and boot provide strain relief where the shielded harness exits
+                the body.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Guiding Forks and Contacting Principle</h3>
+            <p>
+                Two U-shaped forks form the mechanical interface. Their tapered entries self-centre in the
+                DUT’s plastic features; generous chamfers and rounded edges prevent damage to the guides.
+            </p>
+            <p>
+                Electrical contact is made by flat springs or leaf contacts inside the body. When the tool
+                is fully seated, the springs land on the copper busbars with a defined normal force of
+                about 15–20&nbsp;N per pole, achieving low contact resistance while remaining compliant to
+                small dimensional variations.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Electrical Interface</h3>
+            <p>
+                At the rear, a multipin connector groups power poles, protective earth / shield and
+                low-level signals (voltage sense, temperature, interlock, communication). Multiple pins
+                are paralleled for each power pole to keep current density within the connector rating and
+                allow a compact package.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Applications and Validation</h3>
+            <p>
+                For the DC–DC converter the sequence is: dock, run continuity at low voltage, apply test
+                power, execute functional tests, then undock. For the 1000&nbsp;V fast-charging stage a
+                safety interlock ensures that HV is only present when the tool is fully engaged and the
+                cabinet is closed.
+            </p>
+            <p>
+                Validation includes dimensional checks of fork spacing, four-wire contact-resistance
+                measurements, dielectric withstand tests and endurance cycling with inspection of both
+                DUT and tool. The resulting design replaces a manual, operator-dependent HV connection
+                with a controlled, automatable operation.
+            </p>
+        </section>
+    </div>
+</div>
 
 <div id="report-modal" class="modal">
     <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -798,18 +1715,267 @@
             </figure>
         </header>
 
-        <!-- ECU sections unchanged from previous version -->
-        <!-- ... keep full ECU content here exactly as you already have it ... -->
-        <!-- (omitted in this snippet for brevity if you still have it in your file) -->
+        <section class="report-section">
+            <h3>Project Context and Objectives</h3>
+            <p>
+                The assignment was to create a production-capable bed-of-nails tester for a new
+                automotive ECU. The system combines In-Circuit and Functional tests with a dense field
+                of spring-loaded probes while keeping board deformation at critical BGA corners within a
+                defined principal-strain limit.
+            </p>
+            <p>
+                The fixture fits into an end-of-line station, complies with safety requirements, and
+                provides highly repeatable touchdown without solder-joint damage. Strain gauges are used
+                during validation; series production relies on the verified touchdown profile and
+                documented process limits.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>System Architecture</h3>
+            <p>
+                The design uses a clamshell layout. A moving top fixture carries the probe plate and
+                travels vertically on four shafts with linear bearings, while a bottom fixture supports
+                the ECU on a Delrin carrier. Gas springs generate the closing force and reopen the system
+                when power is removed.
+            </p>
+            <p>
+                The probe plate is machined from G10/FR-4 for stiffness and electrical insulation. A
+                primary locating pin defines the main datum; a slotted secondary pin removes rotation
+                without over-constraining the plate, and spacer blocks set probe stand-off. The bottom
+                fixture uses hardened bushings, guide pins, static pushers, and capacitive sensors to
+                verify proper ECU seating before touchdown.
+            </p>
+
+            <div class="inline-kpi">
+                <div class="kpi-chip"><strong>200+</strong> spring probes for ICT and FCT</div>
+                <div class="kpi-chip"><strong>≤ 0.05&nbsp;mm</strong> probe-plate deflection budget</div>
+                <div class="kpi-chip"><strong>≤ 400&nbsp;µε</strong> principal-strain limit at BGA corner</div>
+            </div>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/1.jpg" alt="Datum and planarity">
+                    <figcaption>
+                        <span>Figure 1.</span>
+                        Datum and planarity controls with primary locating pin, slotted secondary pin,
+                        and probe-plate spacers.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/2.jpg" alt="Top fixture exploded">
+                    <figcaption>
+                        <span>Figure 2.</span>
+                        Top fixture exploded view with top plate, interface PCBA, probe plate, pogo
+                        field, static pushers, and standoffs.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/3.jpg" alt="Bottom fixture">
+                    <figcaption>
+                        <span>Figure 3.</span>
+                        Bottom fixture with Delrin carrier, locating-pin bushings, static pushers, and
+                        capacitive presence sensors.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/4.jpg" alt="Tester open">
+                    <figcaption>
+                        <span>Figure 4.</span>
+                        Tester in open position with ECU seated in the lower fixture and the top
+                        assembly raised on shafts.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/5.jpg" alt="Full exploded">
+                    <figcaption>
+                        <span>Figure 5.</span>
+                        Full exploded view including moving plate, shafts, gas springs, electromagnets,
+                        base plate, cable holders, and pinch protection.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Mechanical Design and Safety</h3>
+            <p>
+                The frame and base are aluminium for stiffness with acceptable mass. Linear guides
+                constrain motion to the vertical axis so that probes experience primarily axial loading,
+                and external dampers shape the final stroke to prevent touchdown bounce.
+            </p>
+            <p>
+                A risk analysis highlighted pinch points, stored energy in gas springs, and electrical
+                hazards. The final system includes transparent pinch guards, interlocked access, an
+                emergency-stop chain with safety relay, electromagnets that hold only at dwell, and a
+                fail-safe return to the open position when power is lost.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>FEM-Based Design Verification</h3>
+            <p>
+                Separate finite-element models were built for the probe plate and for the shaft/base
+                structure. Only stiffness-relevant geometry was retained; material properties came from
+                datasheets and mesh refinement kept changes in peak values below a few percent.
+            </p>
+            <p>
+                Under combined probe loads the G10 plate shows roughly 3.95&nbsp;MPa von-Mises stress and
+                about 0.026&nbsp;mm maximum deflection. The shaft/base model predicts around
+                8.5&nbsp;MPa peak stress and less than 0.006&nbsp;mm displacement at the top-plate
+                interface.
+            </p>
+
+            <div class="inline-kpi">
+                <div class="kpi-chip"><strong>FoS ≈ 63</strong> on probe-plate stress</div>
+                <div class="kpi-chip"><strong>FoS ≈ 1.9</strong> on deflection limit</div>
+                <div class="kpi-chip"><strong>FoS > 11</strong> on shaft stress screening limit</div>
+            </div>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/6.jpg" alt="Plate stress">
+                    <figcaption>
+                        <span>Figure 6.</span>
+                        Von-Mises stress in the G10 probe plate under probe spring loads.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/7.jpg" alt="Plate deflection">
+                    <figcaption>
+                        <span>Figure 7.</span>
+                        Total displacement of the probe plate; peak deflection around 0.026&nbsp;mm.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/8.jpg" alt="Shaft/base stress">
+                    <figcaption>
+                        <span>Figure 8.</span>
+                        Stress distribution on the shafts and base from gas-spring and plate loads.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/9.jpg" alt="Shaft/base displacement">
+                    <figcaption>
+                        <span>Figure 9.</span>
+                        Displacement field of the shaft/base structure, confirming sub-0.006&nbsp;mm
+                        movement.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Strain-Gauge Strategy on the PCBA</h3>
+            <p>
+                To validate touchdown loads a 0°/45°/90° foil-gauge rosette is bonded at the corner of the
+                main BGA, which is the dominant hot-spot for board bending and solder-joint failure. The
+                rosette is centred on the corner land pad and solder removal is restricted to the minimum
+                required footprint.
+            </p>
+            <p>
+                Gauge axes align with the board reference directions, and lead wires use strain-relief
+                loops so that cable motion does not corrupt readings.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/10.jpg" alt="Rosette layout">
+                    <figcaption>
+                        <span>Figure 10.</span>
+                        Layout principle for placing the rosette on the BGA corner land pad with limited
+                        pad removal.
+                    </figcaption>
+                </figure>
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/11.jpg" alt="Bonded rosette">
+                    <figcaption>
+                        <span>Figure 11.</span>
+                        Bonded rosette on the ECU PCB with soldered tabs and routed leads.
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/12.jpg"
+                         alt="PCB layout"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 12.</span>
+                        PCB layout snapshot showing BGA area, periphery support, test points, and rosette
+                        locations.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Data Acquisition and LabVIEW Application</h3>
+            <p>
+                Strain signals are acquired via an NI bridge-input module in quarter-bridge mode.
+                LabVIEW converts mV/V outputs to strain using gauge factor and configuration, displaying
+                live traces and principal-strain curves.
+            </p>
+            <p>
+                The software initialises and shunt-calibrates channels, zeros gauges with the fixture
+                open, records data during approach and release, and logs peak values with full waveforms
+                for offline analysis. Additional channels track actuator state so mechanical events can
+                be aligned with strain peaks.
+            </p>
+        </section>
+
+        <section class="report-section">
+            <h3>Results and Validation</h3>
+            <p>
+                Multiple ECUs were cycled through repeated touchdowns. The highest measured principal
+                strain at the instrumented BGA corner is about 345&nbsp;µε with a narrow spread between
+                cycles, safely below the 400&nbsp;µε limit.
+            </p>
+            <p>
+                FEM predicts roughly 360&nbsp;µε at the same location; measurement and simulation agree
+                within a few percent. No pad damage or electrical drift was observed, so the fixture is
+                released for end-of-line use with documented gas-spring, damper, and travel settings.
+            </p>
+
+            <div class="inline-figure-grid">
+                <figure class="inline-figure">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/13.jpg"
+                         alt="Principal strain histories"
+                         class="contain-img">
+                    <figcaption>
+                        <span>Figure 13.</span>
+                        Principal-strain histories from multiple touchdowns at both rosette locations,
+                        showing consistent transient behaviour.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="report-section">
+            <h3>Takeaways</h3>
+            <p>
+                The project combines fixture design, finite-element analysis, and direct strain
+                measurement to tune a safe touchdown profile. The workflow—requirements capture, concept
+                selection, simulation, rosette placement and LabVIEW-based validation—forms a reusable
+                template for future ECU test systems.
+            </p>
+        </section>
     </div>
 </div>
 
-<footer class="footer container" style="border-top:1px solid rgba(255,255,255,0.05); padding:4rem 0; text-align:center;">
+<footer class="footer container" style="border-top:1px solid rgba(255,255,255,0.05); padding:3.5rem 0; text-align:center;">
     <h2>Let's Connect</h2>
     <p style="color: var(--text-muted); margin-top: 1rem;">
         Open for opportunities in mechanical design, cooling systems, simulation, and test engineering.
     </p>
-    <a href="mailto:your.email@example.com"
+    <a href="mailto:muthudeepak18@gmail.com"
        style="display:inline-block; background-color:var(--accent); color:var(--bg-body); padding:0.8rem 2rem; border-radius:50px; font-weight:700; margin-top:1.5rem;">
         Send Email
     </a>
@@ -819,59 +1985,79 @@
 </footer>
 
 <script>
-    function openModal() {
-        document.getElementById('report-modal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeModal() {
-        document.getElementById('report-modal').classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-
-    function openFEMModal() {
-        document.getElementById('fem-modal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeFEMModal() {
-        document.getElementById('fem-modal').classList.remove('active');
-        document.body.style.overflow = 'auto';
+    /* -------- Language switching (EN / DE) ---------- */
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        const elements = document.querySelectorAll('[data-en][data-de]');
+        elements.forEach(el => {
+            el.textContent = el.getAttribute(lang === 'de' ? 'data-de' : 'data-en');
+        });
+        document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        document.getElementById('lang-de').classList.toggle('active', lang === 'de');
     }
 
-    function openML1Modal() {
-        document.getElementById('ml1-modal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeML1Modal() {
-        document.getElementById('ml1-modal').classList.remove('active');
-        document.body.style.overflow = 'auto';
+    document.getElementById('lang-en').addEventListener('click', () => setLanguage('en'));
+    document.getElementById('lang-de').addEventListener('click', () => setLanguage('de'));
+
+    // initialise to English
+    setLanguage('en');
+
+    /* -------- Modal open / close helpers with Scroll Reset ---------- */
+
+    function openModalWithReset(id) {
+        const modal = document.getElementById(id);
+        if (modal) {
+            modal.classList.add('active');
+            // Force scroll to top immediately after opening
+            modal.scrollTop = 0;
+            const inner = modal.querySelector('.modal-inner');
+            if (inner) inner.scrollTop = 0;
+            document.body.style.overflow = 'hidden';
+        }
     }
 
-    function openML2Modal() {
-        document.getElementById('ml2-modal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeML2Modal() {
-        document.getElementById('ml2-modal').classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-
-    function openIndustrialModal() {
-        document.getElementById('industrial-modal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeIndustrialModal() {
-        document.getElementById('industrial-modal').classList.remove('active');
-        document.body.style.overflow = 'auto';
+    function closeModalWithId(id) {
+        const modal = document.getElementById(id);
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     }
 
-    function openEndEffModal() {
-        document.getElementById('end-eff-modal').classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    function closeEndEffModal() {
-        document.getElementById('end-eff-modal').classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
+    // Modal Triggers
+    function openModal() { openModalWithReset('report-modal'); }
+    function closeModal() { closeModalWithId('report-modal'); }
+
+    function openFEMModal() { openModalWithReset('fem-modal'); }
+    function closeFEMModal() { closeModalWithId('fem-modal'); }
+
+    function openML1Modal() { openModalWithReset('ml1-modal'); }
+    function closeML1Modal() { closeModalWithId('ml1-modal'); }
+
+    function openOptics1Modal() { openModalWithReset('optics1-modal'); }
+    function closeOptics1Modal() { closeModalWithId('optics1-modal'); }
+
+    function openOptics2Modal() { openModalWithReset('optics2-modal'); }
+    function closeOptics2Modal() { closeModalWithId('optics2-modal'); }
+
+    function openOptics3Modal() { openModalWithReset('optics3-modal'); }
+    function closeOptics3Modal() { closeModalWithId('optics3-modal'); }
+
+    function openIndustrialModal() { openModalWithReset('industrial-modal'); }
+    function closeIndustrialModal() { closeModalWithId('industrial-modal'); }
+
+    function openTurbineModal() { openModalWithReset('turbine-modal'); }
+    function closeTurbineModal() { closeModalWithId('turbine-modal'); }
+
+    function openEndEffectorModal() { openModalWithReset('endeffector-modal'); }
+    function closeEndEffectorModal() { closeModalWithId('endeffector-modal'); }
+
+    function openPressureModal() { openModalWithReset('pressure-modal'); }
+    function closePressureModal() { closeModalWithId('pressure-modal'); }
+
+    // NEW: Fixtures modal
+    function openFixturesModal() { openModalWithReset('fixtures-modal'); }
+    function closeFixturesModal() { closeModalWithId('fixtures-modal'); }
 </script>
 
 </body>
