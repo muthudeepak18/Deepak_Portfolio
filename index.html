@@ -7,6 +7,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script>
+        document.addEventListener('error', function(event) {
+            var img = event.target;
+            // Only act on images
+            if (img.tagName === 'IMG') {
+                // Prevent infinite loop (stop if we already tried fixing it)
+                if (img.getAttribute('data-retry')) return;
+                
+                // Mark this image as "retried"
+                img.setAttribute('data-retry', 'true');
+
+                var src = img.src;
+                
+                // If it failed on .jpg, switch to .JPG
+                if (src.endsWith('.jpg')) {
+                    img.src = src.replace('.jpg', '.JPG');
+                } 
+                // If it failed on .JPG, switch to .jpg
+                else if (src.endsWith('.JPG')) {
+                    img.src = src.replace('.JPG', '.jpg');
+                }
+            }
+        }, true); // 'true' is required to capture load errors
+    </script>
+
     <style>
         :root {
             --bg-body: #0f172a;
@@ -523,7 +548,7 @@
         <article class="card" onclick="openModal()">
             <div class="card-thumb">
                  <img src="assets/ECU Test Bench, strain analysis, labview/Front image 1.jpg"
-                     alt="ECU Test Bench overview">
+                      alt="ECU Test Bench overview">
             </div>
             <h3>ECU Test Bench &amp; Strain Gauge Validation</h3>
             <div class="card-desc">
@@ -539,7 +564,7 @@
         <article class="card" onclick="openEndEffectorModal()">
             <div class="card-thumb">
                  <img src="assets/End%20effector%20design/1.jpg"
-                     alt="Handheld end-effector for high-voltage modules">
+                      alt="Handheld end-effector for high-voltage modules">
             </div>
             <h3>End Effector Design</h3>
             <div class="card-desc">
@@ -584,8 +609,8 @@
         <article class="card" onclick="openIndustrialModal()">
             <div class="card-thumb">
                  <img src="assets/Matlab + Simulink Industrial Cooling/Cover image.jpg"
-                     alt="Industrial cooling Simulink cover"
-                     class="contain-img">
+                      alt="Industrial cooling Simulink cover"
+                      class="contain-img">
             </div>
             <h3>Matlab + Simulink Industrial Cooling</h3>
             <div class="card-desc">
@@ -601,8 +626,8 @@
         <article class="card" onclick="openTurbineModal()">
             <div class="card-thumb">
                  <img src="assets/Matlab%20+%20Simulink%20turbine/Cover%20image.jpg"
-                     alt="Wind turbine cooling Simulink cover"
-                     class="contain-img">
+                      alt="Wind turbine cooling Simulink cover"
+                      class="contain-img">
             </div>
             <h3>Matlab + Simulink Turbine Cooling</h3>
             <div class="card-desc">
@@ -618,8 +643,8 @@
         <article class="card" onclick="openPressureModal()">
             <div class="card-thumb">
                  <img src="assets/Python%20Script%20-%20Pressure%20Calculation/1.jpg"
-                     alt="Pressure drop calculator dashboard"
-                     class="contain-img">
+                      alt="Pressure drop calculator dashboard"
+                      class="contain-img">
             </div>
             <h3>Python Script – Pressure Calculation</h3>
             <div class="card-desc">
@@ -660,7 +685,7 @@
             <div class="card-desc"
                  data-en="Determination of refractive indices of liquid and solid substances using the Abbe refractometer and analysis of dispersion."
                  data-de="Bestimmung von Brechungsindizes flüssiger und fester Stoffe unter Verwendung des Abbe-Refraktometers und Analyse der Dispersion.">
-                Determination of refractive indices of liquid and solid substances using the Abbe refractometer and analysis of dispersion. 
+                Determination of refractive indices of liquid and solid substances using the Abbe refractometer and analysis of dispersion.
             </div>
             <div class="tags">
                 <span class="tag">Optics</span>
@@ -698,10 +723,7 @@
             <div class="card-desc"
                  data-en="Raytracing simulation to analyze light scattering, reflection, and transmission in complex optical assemblies."
                  data-de="Raytracing-Simulation zur Analyse von Lichtstreuung, Reflexion und Transmission in komplexen optischen Baugruppen.">
-                Raytracing simulation to analyze light scattering, reflection, and transmission in complex optical assemblies. 
-
-[Image of ray tracing simulation]
-
+                Raytracing simulation to analyze light scattering, reflection, and transmission in complex optical assemblies.
             </div>
             <div class="tags">
                 <span class="tag">TracePro</span>
@@ -731,7 +753,7 @@
         <article class="card" onclick="openML1Modal()">
             <div class="card-thumb">
                  <img src="assets/Machine%20Learning/CIE_WiSe22_Deepak%20Petchimuthu.jpg"
-                     alt="CIE WiSe22 project thumbnail">
+                      alt="CIE WiSe22 project thumbnail">
             </div>
             <h3>Machine Learning for Engineering Signals</h3>
             <div class="card-desc">
@@ -781,10 +803,7 @@
             <h3 data-en="Principles of Refraction" data-de="Grundlagen der Brechung">Principles of Refraction</h3>
             <p data-en="Refraction is the bending of light during transmission from one transparent substance into another, caused by different speeds of light propagation. The incident ray is refracted at a certain angle. When the angle of incidence exceeds the critical angle, the ray is reflected back into the medium; this is known as Total Internal Reflection."
                data-de="Brechung ist die Biegung von Licht beim Übergang von einer transparenten Substanz in eine andere, verursacht durch unterschiedliche Ausbreitungsgeschwindigkeiten. Wenn der Einfallswinkel den kritischen Winkel überschreitet, wird der Strahl in das Medium zurückreflektiert; dies wird als Totalreflexion bezeichnet.">
-                Refraction is the bending of light during transmission from one transparent substance into another, caused by different speeds of light propagation. The incident ray is refracted at a certain angle. When the angle of incidence exceeds the critical angle, the ray is reflected back into the medium; this is known as Total Internal Reflection. 
-
-[Image of refraction diagram]
-
+                Refraction is the bending of light during transmission from one transparent substance into another, caused by different speeds of light propagation. The incident ray is refracted at a certain angle. When the angle of incidence exceeds the critical angle, the ray is reflected back into the medium; this is known as Total Internal Reflection.
             </p>
         </section>
 
@@ -819,10 +838,7 @@
             <h3 data-en="Theodolite and Tachymeter" data-de="Theodolit und Tachymeter">Theodolite and Tachymeter</h3>
             <p data-en="A Theodolite is an instrument used to measure horizontal and vertical angles using graduated circles and a telescope. A Tachymeter is essentially a theodolite with an integrated distance measurement system, allowing for the determination of direction, distance, and height in one step."
                data-de="Ein Theodolit ist ein Instrument zur Messung von Horizontal- und Vertikalwinkeln unter Verwendung von Teilkreisen und einem Fernrohr. Ein Tachymeter ist im Wesentlichen ein Theodolit mit integriertem Entfernungsmesssystem, das die Bestimmung von Richtung, Entfernung und Höhe in einem Schritt ermöglicht.">
-                A Theodolite is an instrument used to measure horizontal and vertical angles using graduated circles and a telescope. A Tachymeter is essentially a theodolite with an integrated distance measurement system, allowing for the determination of direction, distance, and height in one step. 
-
-[Image of theodolite]
-
+                A Theodolite is an instrument used to measure horizontal and vertical angles using graduated circles and a telescope. A Tachymeter is essentially a theodolite with an integrated distance measurement system, allowing for the determination of direction, distance, and height in one step.
             </p>
         </section>
 
@@ -1054,19 +1070,16 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/1.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/1.jpg"
                          alt="Figure 1 – High-level Simulink model"
                          class="contain-img">
                     <figcaption>
                         <span>Figure 1.</span>
-                        High-level Simulink model showing plant subsystem, controller subsystem, and test scenarios. 
-
-[Image of Simulink model block diagram]
-
+                        High-level Simulink model showing plant subsystem, controller subsystem, and test scenarios.
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/2.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/2.jpg"
                          alt="Figure 2 – HMI and parameter dashboard"
                          class="contain-img">
                     <figcaption>
@@ -1086,7 +1099,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/3.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/3.jpg"
                          alt="Figure 3 – Pump and main loop plant"
                          class="contain-img">
                     <figcaption>
@@ -1095,7 +1108,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/4.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/4.jpg"
                          alt="Figure 4 – Heat exchanger model"
                          class="contain-img">
                     <figcaption>
@@ -1104,7 +1117,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/5.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/5.jpg"
                          alt="Figure 5 – Consumer branch model"
                          class="contain-img">
                     <figcaption>
@@ -1126,7 +1139,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/6.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/6.jpg"
                          alt="Figure 6 – Control and logic subsystem"
                          class="contain-img">
                     <figcaption>
@@ -1146,7 +1159,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/7.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/7.jpg"
                          alt="Figure 7 – Experiment configuration"
                          class="contain-img">
                     <figcaption>
@@ -1155,7 +1168,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/8.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/8.jpg"
                          alt="Figure 8 – Temperature response plot"
                          class="contain-img">
                     <figcaption>
@@ -1164,7 +1177,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab + Simulink Industrial Cooling/9.jpg"
+                    <img src="assets/Matlab + Simulink Industrial Cooling/9.jpg"
                          alt="Figure 9 – Pump speed and pressure response"
                          class="contain-img">
                     <figcaption>
@@ -1227,7 +1240,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/1.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/1.jpg"
                          alt="Top-level turbine cooling Simulink model"
                          class="contain-img">
                     <figcaption>
@@ -1254,7 +1267,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/2.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/2.jpg"
                          alt="Cooler subsystem overview"
                          class="contain-img">
                     <figcaption>
@@ -1264,7 +1277,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/3.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/3.jpg"
                          alt="Internal plate cooler model"
                          class="contain-img">
                     <figcaption>
@@ -1286,7 +1299,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/4.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/4.jpg"
                          alt="Transformer branch"
                          class="contain-img">
                     <figcaption>
@@ -1296,7 +1309,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/5.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/5.jpg"
                          alt="Converter branches"
                          class="contain-img">
                     <figcaption>
@@ -1318,7 +1331,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/6.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/6.jpg"
                          alt="Pumping unit with centrifugal pump and PRV"
                          class="contain-img">
                     <figcaption>
@@ -1344,7 +1357,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/7.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/7.jpg"
                          alt="Wind and power model block"
                          class="contain-img">
                     <figcaption>
@@ -1372,7 +1385,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/8.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/8.jpg"
                          alt="Converters inlet temperatures, simulations 1–18"
                          class="contain-img">
                     <figcaption>
@@ -1383,7 +1396,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/Matlab%20+%20Simulink%20turbine/9.jpg"
+                    <img src="assets/Matlab%20+%20Simulink%20turbine/9.jpg"
                          alt="Cooler heat exchange, simulations 1–18"
                          class="contain-img">
                     <figcaption>
@@ -1407,10 +1420,7 @@
                 The wind-turbine cooling model links analytical equations, MATLAB functions and Simscape
                 components in one environment. It shows how cooler size, pump selection and valve
                 strategy affect thermal margins and hydraulic performance before hardware is built, and
-                the same framework can be reused for future turbine platforms. 
-
-[Image of wind turbine cooling system]
-
+                the same framework can be reused for future turbine platforms.
             </p>
         </section>
 
@@ -1438,7 +1448,7 @@
             </p>
 
             <figure class="hero-figure">
-                 <img src="assets/Python%20Script%20-%20Pressure%20Calculation/1.jpg"
+                <img src="assets/Python%20Script%20-%20Pressure%20Calculation/1.jpg"
                      alt="Pressure drop calculator dashboard">
                 <figcaption class="hero-figure-caption">
                     <span>Dashboard view.</span>
@@ -1594,10 +1604,7 @@
                 This project develops a dedicated end-effector that can be used either by an operator or
                 by a robot. It must guide accurately onto the DUT’s copper terminals, make
                 low-resistance electrical contact, respect all HV distances and survive thousands of
-                docking cycles. 
-
-[Image of robotic end effector]
-
+                docking cycles.
             </p>
         </section>
 
@@ -1606,7 +1613,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/End%20effector%20design/1.jpg"
+                    <img src="assets/End%20effector%20design/1.jpg"
                          alt="Handheld connector / end-effector">
                     <figcaption>
                         <span>Figure 1.</span>
@@ -1616,7 +1623,7 @@
                 </figure>
 
                 <figure class="inline-figure">
-                     <img src="assets/End%20effector%20design/2.jpg"
+                    <img src="assets/End%20effector%20design/2.jpg"
                          alt="HV fuse and busbar assembly">
                     <figcaption>
                         <span>Figure 2.</span>
@@ -1721,7 +1728,7 @@
             </p>
 
             <figure class="hero-figure">
-                 <img src="assets/ECU Test Bench, strain analysis, labview/Front image.jpg"
+                <img src="assets/ECU Test Bench, strain analysis, labview/Front image.jpg"
                      alt="Tester overview front">
                 <figcaption class="hero-figure-caption">
                     <span>Overview.</span>
@@ -1770,7 +1777,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/1.jpg" alt="Datum and planarity">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/1.jpg" alt="Datum and planarity">
                     <figcaption>
                         <span>Figure 1.</span>
                         Datum and planarity controls with primary locating pin, slotted secondary pin,
@@ -1778,7 +1785,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/2.jpg" alt="Top fixture exploded">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/2.jpg" alt="Top fixture exploded">
                     <figcaption>
                         <span>Figure 2.</span>
                         Top fixture exploded view with top plate, interface PCBA, probe plate, pogo
@@ -1789,7 +1796,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/3.jpg" alt="Bottom fixture">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/3.jpg" alt="Bottom fixture">
                     <figcaption>
                         <span>Figure 3.</span>
                         Bottom fixture with Delrin carrier, locating-pin bushings, static pushers, and
@@ -1797,7 +1804,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/4.jpg" alt="Tester open">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/4.jpg" alt="Tester open">
                     <figcaption>
                         <span>Figure 4.</span>
                         Tester in open position with ECU seated in the lower fixture and the top
@@ -1805,7 +1812,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/5.jpg" alt="Full exploded">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/5.jpg" alt="Full exploded">
                     <figcaption>
                         <span>Figure 5.</span>
                         Full exploded view including moving plate, shafts, gas springs, electromagnets,
@@ -1852,14 +1859,14 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/6.jpg" alt="Plate stress">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/6.jpg" alt="Plate stress">
                     <figcaption>
                         <span>Figure 6.</span>
                         Von-Mises stress in the G10 probe plate under probe spring loads.
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/7.jpg" alt="Plate deflection">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/7.jpg" alt="Plate deflection">
                     <figcaption>
                         <span>Figure 7.</span>
                         Total displacement of the probe plate; peak deflection around 0.026&nbsp;mm.
@@ -1869,14 +1876,14 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/8.jpg" alt="Shaft/base stress">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/8.jpg" alt="Shaft/base stress">
                     <figcaption>
                         <span>Figure 8.</span>
                         Stress distribution on the shafts and base from gas-spring and plate loads.
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/9.jpg" alt="Shaft/base displacement">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/9.jpg" alt="Shaft/base displacement">
                     <figcaption>
                         <span>Figure 9.</span>
                         Displacement field of the shaft/base structure, confirming sub-0.006&nbsp;mm
@@ -1901,7 +1908,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/10.jpg" alt="Rosette layout">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/10.jpg" alt="Rosette layout">
                     <figcaption>
                         <span>Figure 10.</span>
                         Layout principle for placing the rosette on the BGA corner land pad with limited
@@ -1909,7 +1916,7 @@
                     </figcaption>
                 </figure>
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/11.jpg" alt="Bonded rosette">
+                    <img src="assets/ECU Test Bench, strain analysis, labview/11.jpg" alt="Bonded rosette">
                     <figcaption>
                         <span>Figure 11.</span>
                         Bonded rosette on the ECU PCB with soldered tabs and routed leads.
@@ -1919,7 +1926,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/12.jpg"
+                    <img src="assets/ECU Test Bench, strain analysis, labview/12.jpg"
                          alt="PCB layout"
                          class="contain-img">
                     <figcaption>
@@ -1942,7 +1949,7 @@
                 The software initialises and shunt-calibrates channels, zeros gauges with the fixture
                 open, records data during approach and release, and logs peak values with full waveforms
                 for offline analysis. Additional channels track actuator state so mechanical events can
-                be aligned with strain peaks. 
+                be aligned with strain peaks.
             </p>
         </section>
 
@@ -1961,7 +1968,7 @@
 
             <div class="inline-figure-grid">
                 <figure class="inline-figure">
-                     <img src="assets/ECU Test Bench, strain analysis, labview/13.jpg"
+                    <img src="assets/ECU Test Bench, strain analysis, labview/13.jpg"
                          alt="Principal strain histories"
                          class="contain-img">
                     <figcaption>
